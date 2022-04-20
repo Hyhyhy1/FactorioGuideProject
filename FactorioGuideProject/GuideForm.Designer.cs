@@ -1,6 +1,6 @@
 ﻿namespace FactorioGuideProject
 {
-    partial class Form1
+    partial class GuideForm
     {
         /// <summary>
         /// Обязательная переменная конструктора.

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace FactorioGuideProject
 {
-    public partial class Form1 : Form
+    public partial class GuideForm : Form
     {
-        public Form1()
+        public GuideForm()
         {
             InitializeComponent();
         }
