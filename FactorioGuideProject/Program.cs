@@ -18,5 +18,9 @@ namespace FactorioGuideProject
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new GuideForm());
         }
+        //public static void Main()
+        //{
+        //    Application.Run(new GuideForm());
+        //}
     }
 }

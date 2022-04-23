@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -10,45 +8,28 @@ using System.Windows.Forms;
 
 namespace FactorioGuideProject
 {
-    public partial class GuideForm : Form
+    class GuideForm : Form
     {
-        ComboBox sections;
         public GuideForm()
         {
+			ComboBox mybox = new ComboBox()
+			{
+				Location = new Point(0, 0),
+				Size = new Size(216, 26),
+				Text = "Этапы прохождения"
+			};
 
-            sections = new ComboBox()
-            {
-                Location = new Point(10, 10),
-                Size = new Size(150, 30),
-                Text = "Этапы прохождения",
-                DropDownStyle = ComboBoxStyle.DropDownList
-            };
-            sections.SelectedIndexChanged += sb_SelectIndexChanged;
-
-            var table = new TableLayoutPanel();
-            table.ColumnStyles.Clear();
-            table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 60));
-            InitializeComponent();
-
+			mybox.Items.Add("Создание карты");
+			mybox.Items.Add("Первые шаги");
+			mybox.Items.Add("Электричество");
+			mybox.Items.Add("Первая автоматизация");
+			mybox.Items.Add("Красная наука");
+			mybox.Items.Add("Зеленая наука");
+			mybox.Items.Add("Важность обороны");
+			mybox.Items.Add("Синяя наука");
+			mybox.Items.Add("Фиолетовая и желтая наука");
+			mybox.Items.Add("Финал!");
+			Controls.Add(mybox);
         }
-
-        private void sb_Load(object sender, EventArgs e)
-        {
-            sections.Items.Add("Создание карты");
-            sections.Items.Add("Первые шаги");
-            sections.Items.Add("Электричество");
-            sections.Items.Add("Первая автоматизация");
-            sections.Items.Add("Красная наука");
-            sections.Items.Add("Зеленая наука");
-            sections.Items.Add("Синяя наука");
-            sections.Items.Add("Фиолетовая и желтая наука");
-            sections.Items.Add("РАКЕТА!!!!");
-        }
-
-        private void sb_SelectIndexChanged(object sender, EventArgs e)
-        {
-            string selectedState = sections.SelectedItem.ToString();
-            MessageBox.Show(selectedState);
-        }
-    }
+	}
 }
