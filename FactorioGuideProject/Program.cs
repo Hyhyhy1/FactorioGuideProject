@@ -16,11 +16,10 @@ namespace FactorioGuideProject
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GuideForm());
+            var GuideForm = new GuideForm();
+            GuideForm.Text = "Гайд по Факторио";
+            GuideForm.Size = new System.Drawing.Size(500,450);
+            Application.Run(GuideForm);
         }
-        //public static void Main()
-        //{
-        //    Application.Run(new GuideForm());
-        //}
     }
 }

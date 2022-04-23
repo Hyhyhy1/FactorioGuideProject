@@ -12,24 +12,54 @@ namespace FactorioGuideProject
     {
         public GuideForm()
         {
-			ComboBox mybox = new ComboBox()
+			var panel = new TableLayoutPanel();
+			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 5));
+			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 5));
+			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 80));
+			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 5));
+			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 5));
+			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10));
+			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 80));
+			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10));
+
+			var Chapters = new ComboBox()
 			{
 				Location = new Point(0, 0),
-				Size = new Size(216, 26),
+				Size = new Size(240, 45),
 				Text = "Этапы прохождения"
 			};
 
-			mybox.Items.Add("Создание карты");
-			mybox.Items.Add("Первые шаги");
-			mybox.Items.Add("Электричество");
-			mybox.Items.Add("Первая автоматизация");
-			mybox.Items.Add("Красная наука");
-			mybox.Items.Add("Зеленая наука");
-			mybox.Items.Add("Важность обороны");
-			mybox.Items.Add("Синяя наука");
-			mybox.Items.Add("Фиолетовая и желтая наука");
-			mybox.Items.Add("Финал!");
-			Controls.Add(mybox);
-        }
+			Chapters.Items.Add("Создание карты");
+			Chapters.Items.Add("Первые шаги");
+			Chapters.Items.Add("Электричество");
+			Chapters.Items.Add("Первая автоматизация");
+			Chapters.Items.Add("Красная наука");
+			Chapters.Items.Add("Зеленая наука");
+			Chapters.Items.Add("Важность обороны");
+			Chapters.Items.Add("Синяя наука");
+			Chapters.Items.Add("Фиолетовая и желтая наука");
+			Chapters.Items.Add("Финал!");
+
+			panel.Controls.Add(new Panel(), 0, 0);
+			panel.Controls.Add(new Panel(), 0, 1);
+			panel.Controls.Add(new Panel(), 0, 2);
+			panel.Controls.Add(new Panel(), 0, 3);//заменить на кнопку 
+			panel.Controls.Add(new Panel(), 0, 4);
+			panel.Controls.Add(new Panel(), 1, 0);
+			panel.Controls.Add(new Panel(), 1, 1);//заменить на заголовок(возможно)
+			panel.Controls.Add(new Panel(), 1, 2);//заменить на текст
+			panel.Controls.Add(new Panel(), 1, 3);
+			panel.Controls.Add(new Panel(), 1, 4);
+			panel.Controls.Add(new Panel(), 2, 0);
+			panel.Controls.Add(new Panel(), 2, 1);
+			panel.Controls.Add(new Panel(), 2, 2);
+			panel.Controls.Add(new Panel(), 2, 3);//заменить на кнопку
+			panel.Controls.Add(new Panel(), 2, 4);
+
+			panel.Dock = DockStyle.Fill;
+
+			Controls.Add(Chapters);
+			Controls.Add(panel);
+		}
 	}
 }
