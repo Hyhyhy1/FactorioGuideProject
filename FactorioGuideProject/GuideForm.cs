@@ -25,8 +25,28 @@ namespace FactorioGuideProject
 			var Chapters = new ComboBox()
 			{
 				Location = new Point(0, 0),
-				Size = new Size(240, 45),
-				Text = "Этапы прохождения"
+				Size = new Size(210, 40),
+				Text = "Этапы прохождения",
+			};
+
+			var slideLabel = new Label
+			{
+				Text = "Введение"
+			};
+
+			var slideText = new TextBox()
+			{
+				Multiline = true,
+				Text = "Добро пожаловать в наше приложение!" +
+				Environment.NewLine + "Данный интерактивный гайд поможет Вам разобраться в Factorio." +
+				Environment.NewLine + "Мы постарались сделать его максимально удобным и сконструированным." +
+				Environment.NewLine + "" +
+				Environment.NewLine + "Тут Вы сможете найти:" +
+				Environment.NewLine + "Пошаговую инструкцию, со всей нужной дополнительной информацией" +
+				Environment.NewLine + "Сведения о механиках игры" +
+				Environment.NewLine + "Полезные советы при тупиковых ситуациях." +
+				Environment.NewLine + "С нами у Вас не возникнет проблем с прохождением Factorio. Приятной игры!",
+				Dock = DockStyle.Fill,
 			};
 
 			Chapters.Items.Add("Создание карты");
@@ -46,8 +66,8 @@ namespace FactorioGuideProject
 			panel.Controls.Add(new Panel(), 0, 3);//заменить на кнопку 
 			panel.Controls.Add(new Panel(), 0, 4);
 			panel.Controls.Add(new Panel(), 1, 0);
-			panel.Controls.Add(new Panel(), 1, 1);//заменить на заголовок(возможно)
-			panel.Controls.Add(new Panel(), 1, 2);//заменить на текст
+			panel.Controls.Add(slideLabel, 1, 1);//заменить на заголовок(возможно)
+			panel.Controls.Add(slideText, 1, 2);//заменить на текст
 			panel.Controls.Add(new Panel(), 1, 3);
 			panel.Controls.Add(new Panel(), 1, 4);
 			panel.Controls.Add(new Panel(), 2, 0);
@@ -60,6 +80,11 @@ namespace FactorioGuideProject
 
 			Controls.Add(Chapters);
 			Controls.Add(panel);
+			Chapters.SelectedIndexChanged += new EventHandler(Chapters_SelectedIndexChanged);
 		}
+		private void Chapters_SelectedIndexChanged()
+        {
+			switch()
+        }
 	}
 }
