@@ -19,11 +19,11 @@ namespace FactorioGuideProject
 			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 5));
 			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 5));
 			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 80));
-			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 5));
-			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 5));
-			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10));
-			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 80));
-			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10));
+			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 7));
+			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 3));
+			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 11));
+			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 78));
+			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 11));
 			panel.Dock = DockStyle.Fill;
 			return panel;
 		}

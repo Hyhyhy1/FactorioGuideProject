@@ -10,7 +10,8 @@ namespace FactorioGuideProject
 {
     class GuideForm : Form
     {
-		TableLayoutPanel Previous;
+		DoubleSideLinkedList<TableLayoutPanel> CurrentGroup;
+		ListItem<TableLayoutPanel> currentPanel;
         public GuideForm()
         {
 			var panel =Scheme.CreateNewTablePanel();
@@ -55,6 +56,20 @@ namespace FactorioGuideProject
 				Dock = DockStyle.Fill,
 			};
 
+			var nextSlide = new Button
+			{
+				Text = "Далее",
+				Dock = DockStyle.Fill,
+				FlatStyle = FlatStyle.Flat,
+			};
+
+			var prevSlide = new Button
+			{
+				Text = "Назад",
+				Dock = DockStyle.Fill,
+				FlatStyle = FlatStyle.Flat,
+			};
+
 			Chapters.Items.Add("Создание карты");
 			Chapters.Items.Add("Первые шаги");
 			Chapters.Items.Add("Электричество");
@@ -67,26 +82,23 @@ namespace FactorioGuideProject
 			Chapters.Items.Add("Финал!");
 
 			Scheme.GetSiplePage(panel, initialSlideLabel, initialSlideText);
-			panel.Controls.Add(new Panel(), 0, 0);
-			panel.Controls.Add(new Panel(), 0, 1);
-			panel.Controls.Add(new Panel(), 0, 2);
-			panel.Controls.Add(new Panel(), 0, 3); 
-			panel.Controls.Add(new Panel(), 0, 4);
-			panel.Controls.Add(new Panel(), 1, 0);
-			panel.Controls.Add(initialSlideLabel, 1, 1);//заменить на заголовок(возможно)
-			panel.Controls.Add(initialSlideText, 1, 2);//заменить на текст
-			panel.Controls.Add(new Panel(), 1, 3);
-			panel.Controls.Add(new Panel(), 1, 4);
-			panel.Controls.Add(new Panel(), 2, 0);
-			panel.Controls.Add(new Panel(), 2, 1);
-			panel.Controls.Add(new Panel(), 2, 2);
-			panel.Controls.Add(new Panel(), 2, 3);
-			panel.Controls.Add(new Panel(), 2, 4);
 
-			panel.Dock = DockStyle.Fill;
+			nextSlide.Click += (sender, args) =>
+			{
+				Controls.Remove(panel);
+				currentPanel = currentPanel.Next;
+				panel = currentPanel.Value;
+				Controls.Add(panel);
+			};
 
-			Controls.Add(Chapters);
-			Controls.Add(panel);
+			prevSlide.Click += (sender, args) =>
+			{
+				Controls.Remove(panel);
+				currentPanel = currentPanel.Previous;
+				panel = currentPanel.Value;
+				Controls.Add(panel);
+			};
+
 
 			Chapters.SelectedIndexChanged += (sender, args) =>
 			{
@@ -96,49 +108,34 @@ namespace FactorioGuideProject
 				switch (Chapters.SelectedIndex)
 				{
 					case 0://Создание карты
-						Scheme.GetSiplePage(panel, mapCreationLabel, mapCreationText);
+						Scheme.GetPageWithNextButton(panel, mapCreationLabel, mapCreationText, nextSlide);
 						Controls.Add(panel);
 						break;
 
-					case 1://Первые шаги
-						Scheme.GetPageWithNextButton(panel,firstStepsLabel,firstStepsText0,nextSlide)
+					//case 1://Первые шаги
+					//	Scheme.GetPageWithNextButton(panel, firstStepsLabel, firstStepsText0, nextSlide);
+					//	Controls.Add(panel);
+					//	break;
 
-						Controls.Add(panel);
-						break;
+					//case 2://Электричество
+					//	Scheme.GetPageWithNextButton(panel, electricityLabel, electricityText0, nextSlide);
+					//	Controls.Add(panel);
+					//	break;
 
-					case 2://Электричество
-						Scheme.GetPageWithNextButton(panel, electricityLabel, electricityText0, nextSlide)
+					//case 3://Первая автоматизация
+					//	Scheme.GetPageWithNextButton(panel, initialAutomationLabel, initialAutomationText0, nextSlide);
+					//	Controls.Add(panel);
+					//	break;
 
-						Controls.Add(panel);
-						break;
-
-					case 3://Первая автоматизация
-						Scheme.GetPageWithNextButton(panel, initialAutomationLabel, initialAutomationText0, nextSlide)
-
-						Controls.Add(panel);
-						break;
-
-					case 4://Красная наука
-						panel.Controls.Add(new Panel(), 0, 0);
-						panel.Controls.Add(new Panel(), 0, 1);
-						panel.Controls.Add(new Panel(), 0, 2);
-						panel.Controls.Add(new Panel(), 0, 3);//заменить на кнопку 
-						panel.Controls.Add(new Panel(), 0, 4);
-						panel.Controls.Add(new Panel(), 1, 0);
-						panel.Controls.Add(mapCreationLabel, 1, 1);//заменить заголовок
-						panel.Controls.Add(mapCreationText, 1, 2);//заменить текст
-						panel.Controls.Add(new Panel(), 1, 3);
-						panel.Controls.Add(new Panel(), 1, 4);
-						panel.Controls.Add(new Panel(), 2, 0);
-						panel.Controls.Add(new Panel(), 2, 1);
-						panel.Controls.Add(new Panel(), 2, 2);
-						panel.Controls.Add(new Panel(), 2, 3);//заменить на кнопку
-						panel.Controls.Add(new Panel(), 2, 4);
-
-						Controls.Add(panel);
-						break;
+					//case 4://Красная наука
+					//	Scheme.GetPageWithNextButton(panel, redScienceLabel, redScienceText0, nextSlide)
+					//	Controls.Add(panel);
+					//	break;
 				}
 			};
+
+			Controls.Add(Chapters);
+			Controls.Add(panel);
 		}
 	}
 }
