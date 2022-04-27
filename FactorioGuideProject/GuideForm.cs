@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using static FactorioGuideProject.GroupConstructor;
+using static FactorioGuideProject.GroupTexts;
+
 using System.Windows.Forms;
 
 namespace FactorioGuideProject
@@ -14,8 +13,6 @@ namespace FactorioGuideProject
 		ListItem<TableLayoutPanel> currentPanel;
         public GuideForm()
         {
-			var panel =Scheme.CreateNewTablePanel();
-
 			var Chapters = new ComboBox()
 			{
 				Location = new Point(0, 0),
@@ -81,7 +78,7 @@ namespace FactorioGuideProject
 			Chapters.Items.Add("Фиолетовая и желтая наука");
 			Chapters.Items.Add("Финал!");
 
-			Scheme.GetSiplePage(panel, initialSlideLabel, initialSlideText);
+			var panel = Scheme.GetSiplePage(initialSlideLabel, initialSlideText);
 
 			nextSlide.Click += (sender, args) =>
 			{
@@ -108,7 +105,9 @@ namespace FactorioGuideProject
 				switch (Chapters.SelectedIndex)
 				{
 					case 0://Создание карты
-						Scheme.GetPageWithNextButton(panel, mapCreationLabel, mapCreationText, nextSlide);
+						CurrentGroup = CreateGroupMapCreation(mapCreationLabel,GetMapCreationGroup(),nextSlide,prevSlide);
+						currentPanel = CurrentGroup.First();
+						panel = currentPanel.Value;
 						Controls.Add(panel);
 						break;
 

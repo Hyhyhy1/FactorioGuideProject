@@ -45,6 +45,14 @@ namespace FactorioGuideProject
             Tail = null;
             Count = 0;
         }
+        public ListItem<T> First()
+        {
+            return Head;
+        }
+        public ListItem<T> Last()
+        {
+            return Tail;
+        }
     }
 
     

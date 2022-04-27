@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace FactorioGuideProject
 {
@@ -12,7 +7,7 @@ namespace FactorioGuideProject
 		/// <summary>
 		/// стандартный макет таблицы слайда
 		/// </summary>
-		/// <returns></returns>
+		/// <returns>стандартный макет таблицы</returns>
 		public static TableLayoutPanel CreateNewTablePanel()
         {
 			TableLayoutPanel panel = new TableLayoutPanel();
@@ -29,13 +24,14 @@ namespace FactorioGuideProject
 		}
 
 		/// <summary>
-		/// конструктор простых слайдов
+		/// этот метод создает простой слайд без кнопок
 		/// </summary>
-		/// <param name="panel">таблица</param>
-		/// <param name="label">заголовок</param>
-		/// <param name="text">текст</param>
-		public static void GetSiplePage(TableLayoutPanel panel, Label label, TextBox text)
+		/// <param name="label">заголовок слайда</param>
+		/// <param name="text">текст слайда</param>
+		/// <returns></returns>
+		public static TableLayoutPanel GetSiplePage(Label label, TextBox text)
         {
+			var panel = CreateNewTablePanel();
 			panel.Controls.Add(new Panel(), 0, 0);
 			panel.Controls.Add(new Panel(), 0, 1);
 			panel.Controls.Add(new Panel(), 0, 2);
@@ -51,17 +47,19 @@ namespace FactorioGuideProject
 			panel.Controls.Add(new Panel(), 2, 2);
 			panel.Controls.Add(new Panel(), 2, 3);//заменить на кнопку
 			panel.Controls.Add(new Panel(), 2, 4);
+			return panel;
 		}
 
 		/// <summary>
-		/// Этот метод задает поля таблицы panel для первых слайдов раздела
+		/// Конструктор начальный слайдов в разделе
 		/// </summary>
-		/// <param name="panel">таблица</param>
-		/// <param name="label">заголовок</param>
-		/// <param name="text">текст</param>
-		/// <param name="nextSlide">кнопка для перехода на следующий слайд</param>
-		public static void GetPageWithNextButton(TableLayoutPanel panel, Label label, TextBox text, Button nextSlide)
+		/// <param name="label">заголовок слайда</param>
+		/// <param name="text">текст слайда</param>
+		/// <param name="nextSlide">кнопка перехода вперед</param>
+		/// <returns></returns>
+		public static TableLayoutPanel GetPageWithNextButton(Label label, TextBox text, Button nextSlide)
         {
+			var panel = CreateNewTablePanel();
 			panel.Controls.Add(new Panel(), 0, 0);
 			panel.Controls.Add(new Panel(), 0, 1);
 			panel.Controls.Add(new Panel(), 0, 2);
@@ -77,18 +75,20 @@ namespace FactorioGuideProject
 			panel.Controls.Add(new Panel(), 2, 2);
 			panel.Controls.Add(nextSlide, 2, 3);//заменить на кнопку
 			panel.Controls.Add(new Panel(), 2, 4);
+			return panel;
 		}
 
 		/// <summary>
-		/// Этот метод задает поля таблицы panel для центральных слайдов раздела
+		/// конструктор центральных слайдов в разделе
 		/// </summary>
-		/// <param name="panel">таблица</param>
 		/// <param name="label">заголовок слайда</param>
 		/// <param name="text">текст слайда</param>
-		/// <param name="nextSlide">кнопка перехода на следующий слайд</param>
-		/// <param name="prevSlide">кнопка перехода на прошлый слайд</param>
-		public static void GetPageWithTwoButtons(TableLayoutPanel panel, Label label, TextBox text, Button nextSlide, Button prevSlide)
+		/// <param name="nextSlide">кнопка перехода вперед</param>
+		/// <param name="prevSlide">кнопка перехода назад</param>
+		/// <returns></returns>
+		public static TableLayoutPanel GetPageWithTwoButtons(Label label, TextBox text, Button nextSlide, Button prevSlide)
 		{
+			var panel = CreateNewTablePanel();
 			panel.Controls.Add(new Panel(), 0, 0);
 			panel.Controls.Add(new Panel(), 0, 1);
 			panel.Controls.Add(new Panel(), 0, 2);
@@ -104,17 +104,19 @@ namespace FactorioGuideProject
 			panel.Controls.Add(new Panel(), 2, 2);
 			panel.Controls.Add(nextSlide, 2, 3);//заменить на кнопку
 			panel.Controls.Add(new Panel(), 2, 4);
+			return panel;
 		}
 
 		/// <summary>
-		/// Этот метод задает поля таблицы panel для конечных слайдов раздела
+		/// конструктор конечных слайдов разделов
 		/// </summary>
-		/// <param name="panel">таблица</param>
 		/// <param name="label">заголовок слайда</param>
 		/// <param name="text">текст слайда</param>
-		/// <param name="prevSlide">кнопка для перехода на прошлый слайд</param>
-		public static void GetPageWithPrevButtons(TableLayoutPanel panel, Label label, TextBox text, Button prevSlide)
+		/// <param name="prevSlide">кнопка перехода назад</param>
+		/// <returns></returns>
+		public static TableLayoutPanel GetPageWithPrevButton(Label label, TextBox text, Button prevSlide)
 		{
+			var panel = CreateNewTablePanel();
 			panel.Controls.Add(new Panel(), 0, 0);
 			panel.Controls.Add(new Panel(), 0, 1);
 			panel.Controls.Add(new Panel(), 0, 2);
@@ -130,6 +132,7 @@ namespace FactorioGuideProject
 			panel.Controls.Add(new Panel(), 2, 2);
 			panel.Controls.Add(new Panel(), 2, 3);//заменить на кнопку
 			panel.Controls.Add(new Panel(), 2, 4);
+			return panel;
 		}
 	}
 }

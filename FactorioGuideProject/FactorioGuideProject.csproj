@@ -48,6 +48,8 @@
   <ItemGroup>
     <Compile Include="DoubleSideLinkedList.cs" />
     <Compile Include="FormTableConstructor.cs" />
+    <Compile Include="GroupConstructor.cs" />
+    <Compile Include="GroupTexts.cs" />
     <Compile Include="GuideForm.cs">
       <SubType>Form</SubType>
     </Compile>
