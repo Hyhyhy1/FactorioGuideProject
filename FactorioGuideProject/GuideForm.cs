@@ -9,19 +9,22 @@ namespace FactorioGuideProject
 {
     class GuideForm : Form
     {
-		 DoubleSideLinkedList<TableLayoutPanel> CurrentGroup = new DoubleSideLinkedList<TableLayoutPanel>();
-		 ListItem<TableLayoutPanel> currentPanel;
-
-		public static Button nextButton { get { return new Button { Text = "Далее", Dock = DockStyle.Fill, FlatStyle = FlatStyle.Flat, }; } }
-		public static Button prevButton { get { return new Button { Text = "Назад", Dock = DockStyle.Fill, FlatStyle = FlatStyle.Flat, }; } }
+		DoubleSideLinkedList<TableLayoutPanel> CurrentGroup = new DoubleSideLinkedList<TableLayoutPanel>();
+		ListItem<TableLayoutPanel> currentPanel;
+		TableLayoutPanel Panel;
 		public GuideForm()
         {
-			var Chapters = new ComboBox()
-			{
-				Location = new Point(0, 0),
-				Size = new Size(210, 40),
-				Text = "Этапы прохождения",
-			};
+			var nextButtons = new Button[30];
+			for(int i = 0; i < 30; i++)
+				nextButtons[i] = new Button { Text = "Далее", Dock = DockStyle.Fill, FlatStyle = FlatStyle.Flat, };
+			foreach (var button in nextButtons)
+				button.Click += (nextButtonClick);
+
+			var prevButtons = new Button[30];//можно ли как - то сделать одну универсальную кнопку вперед и назад и передавать её на все TableLayoutPanel?
+			for (int i = 0; i < 30; i++)
+				prevButtons[i] = new Button { Text = "Назад", Dock = DockStyle.Fill, FlatStyle = FlatStyle.Flat, };
+			foreach (var button in prevButtons)
+				button.Click += (prevButtonClick);
 
 			var initialSlideLabel = new Label
 			{
@@ -44,6 +47,15 @@ namespace FactorioGuideProject
 				Dock = DockStyle.Fill,
 			};
 
+			Panel = GetSiplePage(initialSlideLabel, initialSlideText);
+
+			var Chapters = new ComboBox()
+			{
+				Location = new Point(0, 0),
+				Size = new Size(210, 40),
+				Text = "Этапы прохождения",
+			};
+
 			Chapters.Items.Add("Создание карты");
 			Chapters.Items.Add("Первые шаги");
 			Chapters.Items.Add("Электричество");
@@ -55,40 +67,22 @@ namespace FactorioGuideProject
 			Chapters.Items.Add("Фиолетовая и желтая наука");
 			Chapters.Items.Add("Финал!");
 
-			var panel = GetSiplePage(initialSlideLabel, initialSlideText);
-
-			nextButton.Click += (sender, args) =>
-			{
-				Controls.Remove(panel);
-				currentPanel = currentPanel.Next;
-				panel = currentPanel.Value;
-				Controls.Add(panel);
-			};
-
-            prevButton.Click += (sender, args) =>
-			{
-				Controls.Remove(panel);
-				currentPanel = currentPanel.Previous;
-				panel = currentPanel.Value;
-				Controls.Add(panel);
-			};
-
 			Chapters.SelectedIndexChanged += (sender, args) =>
 			{
-				Controls.Remove(panel);
-				panel = Scheme.CreateNewTablePanel();
+				Controls.Remove(Panel);
+				Panel = Scheme.CreateNewTablePanel();
 
 				switch (Chapters.SelectedIndex)
 				{
 					case 0://Создание карты
 						var MapCreationGroupText = GetMapCreationGroup();
-						CurrentGroup.Add(GetPageWithNextButton(MapCreationLabel, MapCreationGroupText[0], nextButton));
-						CurrentGroup.Add(GetPageWithTwoButtons(MapCreationLabel, MapCreationGroupText[1], nextButton, prevButton));
-						CurrentGroup.Add(GetPageWithTwoButtons(MapCreationLabel, MapCreationGroupText[2], nextButton, prevButton));
-						CurrentGroup.Add(GetPageWithPrevButton(MapCreationLabel, MapCreationGroupText[3], prevButton));
+						CurrentGroup.Add(GetPageWithNextButton(MapCreationLabel, MapCreationGroupText[0], nextButtons[0]));
+						CurrentGroup.Add(GetPageWithTwoButtons(MapCreationLabel, MapCreationGroupText[1], nextButtons[1], prevButtons[0]));
+						CurrentGroup.Add(GetPageWithTwoButtons(MapCreationLabel, MapCreationGroupText[2], nextButtons[2], prevButtons[1]));
+						CurrentGroup.Add(GetPageWithPrevButton(MapCreationLabel, MapCreationGroupText[3], prevButtons[2]));
 						currentPanel = CurrentGroup.First();
-						panel = currentPanel.Value;
-						Controls.Add(panel);
+						Panel = currentPanel.Value;
+						Controls.Add(Panel);
 						break;
 
 					//case 1://Первые шаги
@@ -113,7 +107,21 @@ namespace FactorioGuideProject
 				}
 			};
 			Controls.Add(Chapters);
-			Controls.Add(panel);
+			Controls.Add(Panel);
+		}
+		private void nextButtonClick(object sender, EventArgs e)
+		{
+			Controls.Remove(Panel);
+			currentPanel = currentPanel.Next;
+			Panel = currentPanel.Value;
+			Controls.Add(Panel);
+		}
+		private void prevButtonClick(object sender, EventArgs e)
+        {
+			Controls.Remove(Panel);
+			currentPanel = currentPanel.Previous;
+			Panel = currentPanel.Value;
+			Controls.Add(Panel);
 		}
 	}
 }

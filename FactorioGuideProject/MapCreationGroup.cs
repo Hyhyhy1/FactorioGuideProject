@@ -59,15 +59,5 @@ namespace FactorioGuideProject
 
 			return MapCreationGroupText.ToArray();
 		}
-		//public static DoubleSideLinkedList<TableLayoutPanel> CreateGroupMC()
-		//{
-		//	var group = new DoubleSideLinkedList<TableLayoutPanel>();
-		//	var MapCreationGroupText = GetMapCreationGroup();
-		//	group.Add(GetPageWithNextButton(MapCreationLabel, MapCreationGroupText[0], nextButton));
-		//	group.Add(GetPageWithTwoButtons(MapCreationLabel, MapCreationGroupText[1], nextButton, prevButton));
-		//	group.Add(GetPageWithTwoButtons(MapCreationLabel, MapCreationGroupText[2], nextButton, prevButton));
-		//	group.Add(GetPageWithPrevButton(MapCreationLabel, MapCreationGroupText[3], prevButton));
-		//	return group;
-		//}
 	}
 }
