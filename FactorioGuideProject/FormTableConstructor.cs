@@ -35,7 +35,7 @@ namespace FactorioGuideProject
 			panel.Controls.Add(new Panel(), 0, 0);
 			panel.Controls.Add(new Panel(), 0, 1);
 			panel.Controls.Add(new Panel(), 0, 2);
-			panel.Controls.Add(new Panel(), 0, 3);//заменить на кнопку 
+			panel.Controls.Add(new Panel(), 0, 3); 
 			panel.Controls.Add(new Panel(), 0, 4);
 			panel.Controls.Add(new Panel(), 1, 0);
 			panel.Controls.Add(label, 1, 1);
@@ -45,7 +45,7 @@ namespace FactorioGuideProject
 			panel.Controls.Add(new Panel(), 2, 0);
 			panel.Controls.Add(new Panel(), 2, 1);
 			panel.Controls.Add(new Panel(), 2, 2);
-			panel.Controls.Add(new Panel(), 2, 3);//заменить на кнопку
+			panel.Controls.Add(new Panel(), 2, 3);
 			panel.Controls.Add(new Panel(), 2, 4);
 			return panel;
 		}
@@ -63,7 +63,7 @@ namespace FactorioGuideProject
 			panel.Controls.Add(new Panel(), 0, 0);
 			panel.Controls.Add(new Panel(), 0, 1);
 			panel.Controls.Add(new Panel(), 0, 2);
-			panel.Controls.Add(new Panel(), 0, 3);//заменить на кнопку 
+			panel.Controls.Add(new Panel(), 0, 3);
 			panel.Controls.Add(new Panel(), 0, 4);
 			panel.Controls.Add(new Panel(), 1, 0);
 			panel.Controls.Add(label, 1, 1);
@@ -73,7 +73,7 @@ namespace FactorioGuideProject
 			panel.Controls.Add(new Panel(), 2, 0);
 			panel.Controls.Add(new Panel(), 2, 1);
 			panel.Controls.Add(new Panel(), 2, 2);
-			panel.Controls.Add(nextSlide, 2, 3);//заменить на кнопку
+			panel.Controls.Add(nextSlide, 2, 3);
 			panel.Controls.Add(new Panel(), 2, 4);
 			return panel;
 		}
@@ -92,7 +92,7 @@ namespace FactorioGuideProject
 			panel.Controls.Add(new Panel(), 0, 0);
 			panel.Controls.Add(new Panel(), 0, 1);
 			panel.Controls.Add(new Panel(), 0, 2);
-			panel.Controls.Add(prevSlide, 0, 3);//заменить на кнопку 
+			panel.Controls.Add(prevSlide, 0, 3); 
 			panel.Controls.Add(new Panel(), 0, 4);
 			panel.Controls.Add(new Panel(), 1, 0);
 			panel.Controls.Add(label, 1, 1);
@@ -102,7 +102,7 @@ namespace FactorioGuideProject
 			panel.Controls.Add(new Panel(), 2, 0);
 			panel.Controls.Add(new Panel(), 2, 1);
 			panel.Controls.Add(new Panel(), 2, 2);
-			panel.Controls.Add(nextSlide, 2, 3);//заменить на кнопку
+			panel.Controls.Add(nextSlide, 2, 3);
 			panel.Controls.Add(new Panel(), 2, 4);
 			return panel;
 		}
@@ -120,7 +120,7 @@ namespace FactorioGuideProject
 			panel.Controls.Add(new Panel(), 0, 0);
 			panel.Controls.Add(new Panel(), 0, 1);
 			panel.Controls.Add(new Panel(), 0, 2);
-			panel.Controls.Add(prevSlide, 0, 3);//заменить на кнопку 
+			panel.Controls.Add(prevSlide, 0, 3);
 			panel.Controls.Add(new Panel(), 0, 4);
 			panel.Controls.Add(new Panel(), 1, 0);
 			panel.Controls.Add(label, 1, 1);
@@ -130,7 +130,7 @@ namespace FactorioGuideProject
 			panel.Controls.Add(new Panel(), 2, 0);
 			panel.Controls.Add(new Panel(), 2, 1);
 			panel.Controls.Add(new Panel(), 2, 2);
-			panel.Controls.Add(new Panel(), 2, 3);//заменить на кнопку
+			panel.Controls.Add(new Panel(), 2, 3);
 			panel.Controls.Add(new Panel(), 2, 4);
 			return panel;
 		}

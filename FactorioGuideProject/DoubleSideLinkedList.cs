@@ -24,6 +24,10 @@ namespace FactorioGuideProject
         ListItem<T> Tail;
         int Count;
 
+        /// <summary>
+        /// добавляет элемент в конец списка
+        /// </summary>
+        /// <param name="data"></param>
         public void Add(T data)
         {
             ListItem<T> item = new ListItem<T>(data);
@@ -39,16 +43,27 @@ namespace FactorioGuideProject
             Count++;
         }
 
+        /// <summary>
+        /// Удаляет все содержимое списка
+        /// </summary>
         public void Clear()
         {
             Head = null;
             Tail = null;
             Count = 0;
         }
+        /// <summary>
+        /// Возвращает первый элемент списка
+        /// </summary>
+        /// <returns></returns>
         public ListItem<T> First()
         {
             return Head;
         }
+        /// <summary>
+        /// возвращает последний элемент списка
+        /// </summary>
+        /// <returns></returns>
         public ListItem<T> Last()
         {
             return Tail;

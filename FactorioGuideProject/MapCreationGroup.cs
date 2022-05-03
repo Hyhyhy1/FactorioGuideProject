@@ -1,21 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using static FactorioGuideProject.Scheme;
+
 
 namespace FactorioGuideProject
 {
-    
-	public class GroupTexts
-    {
-		private static List<TextBox> MapCreationGroup = new List<TextBox>();
 
-		
+	public class MapCreationGroup
+	{
+		public static Label MapCreationLabel { get { return new Label { Text = "Настройки мира игры" }; } }
 		public static TextBox[] GetMapCreationGroup()
-        {
-			MapCreationGroup.Add(new TextBox()
+		{
+			List<TextBox> MapCreationGroupText = new List<TextBox>();
+			MapCreationGroupText.Add(new TextBox()
 			{
 				Multiline = true,
 				Text = "Генератор карты - это совокупность настроек, с помощью которых определяется, как будет выглядеть ваш мир после создания. " +
@@ -23,7 +21,7 @@ namespace FactorioGuideProject
 				Dock = DockStyle.Fill,
 			});
 
-			MapCreationGroup.Add( new TextBox()
+			MapCreationGroupText.Add(new TextBox()
 			{
 				Multiline = true,
 				Text = "Ресурсы. Здесь мы оставили все без изменений, но стоит поговорить о некоторых параметрах." +
@@ -32,7 +30,7 @@ namespace FactorioGuideProject
 				Dock = DockStyle.Fill,
 			});
 
-			MapCreationGroup.Add(new TextBox()
+			MapCreationGroupText.Add(new TextBox()
 			{
 				Multiline = true,
 				Text = "Ландшафт." +
@@ -42,7 +40,7 @@ namespace FactorioGuideProject
 				Dock = DockStyle.Fill,
 			});
 
-			MapCreationGroup.Add(new TextBox()
+			MapCreationGroupText.Add(new TextBox()
 			{
 				Multiline = true,
 				Text = "Враг." +
@@ -59,7 +57,17 @@ namespace FactorioGuideProject
 				Dock = DockStyle.Fill,
 			});
 
-			return MapCreationGroup.ToArray();
+			return MapCreationGroupText.ToArray();
 		}
+		//public static DoubleSideLinkedList<TableLayoutPanel> CreateGroupMC()
+		//{
+		//	var group = new DoubleSideLinkedList<TableLayoutPanel>();
+		//	var MapCreationGroupText = GetMapCreationGroup();
+		//	group.Add(GetPageWithNextButton(MapCreationLabel, MapCreationGroupText[0], nextButton));
+		//	group.Add(GetPageWithTwoButtons(MapCreationLabel, MapCreationGroupText[1], nextButton, prevButton));
+		//	group.Add(GetPageWithTwoButtons(MapCreationLabel, MapCreationGroupText[2], nextButton, prevButton));
+		//	group.Add(GetPageWithPrevButton(MapCreationLabel, MapCreationGroupText[3], prevButton));
+		//	return group;
+		//}
 	}
 }

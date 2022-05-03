@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
-using static FactorioGuideProject.GroupConstructor;
-using static FactorioGuideProject.GroupTexts;
+using static FactorioGuideProject.MapCreationGroup;
+using static FactorioGuideProject.Scheme;
 
 using System.Windows.Forms;
 
@@ -9,9 +9,12 @@ namespace FactorioGuideProject
 {
     class GuideForm : Form
     {
-		DoubleSideLinkedList<TableLayoutPanel> CurrentGroup;
-		ListItem<TableLayoutPanel> currentPanel;
-        public GuideForm()
+		 DoubleSideLinkedList<TableLayoutPanel> CurrentGroup = new DoubleSideLinkedList<TableLayoutPanel>();
+		 ListItem<TableLayoutPanel> currentPanel;
+
+		public static Button nextButton { get { return new Button { Text = "Далее", Dock = DockStyle.Fill, FlatStyle = FlatStyle.Flat, }; } }
+		public static Button prevButton { get { return new Button { Text = "Назад", Dock = DockStyle.Fill, FlatStyle = FlatStyle.Flat, }; } }
+		public GuideForm()
         {
 			var Chapters = new ComboBox()
 			{
@@ -36,35 +39,9 @@ namespace FactorioGuideProject
 				Environment.NewLine + "Пошаговую инструкцию, со всей нужной дополнительной информацией" +
 				Environment.NewLine + "Сведения о механиках игры" +
 				Environment.NewLine + "Полезные советы при тупиковых ситуациях." +
-				Environment.NewLine + "С нами у Вас не возникнет проблем с прохождением Factorio. Приятной игры!",
+				Environment.NewLine + "С нами у Вас не возникнет проблем с прохождением Factorio. " +
+				Environment.NewLine + "Приятной игры!",
 				Dock = DockStyle.Fill,
-			};
-
-			var mapCreationLabel = new Label
-			{
-				Text = "Настройки мира игры"
-			};
-
-			var mapCreationText = new TextBox()
-			{
-				Multiline = true,
-				Text = "Генератор карты - это совокупность настроек, с помощью которых определяется, как будет выглядеть ваш мир после создания. " +
-				"Для новичков рекомендуется оставлять дефолтные настройки, мы тоже оставили за исключением некоторых пунктов, о которых расскажем ниже.",
-				Dock = DockStyle.Fill,
-			};
-
-			var nextSlide = new Button
-			{
-				Text = "Далее",
-				Dock = DockStyle.Fill,
-				FlatStyle = FlatStyle.Flat,
-			};
-
-			var prevSlide = new Button
-			{
-				Text = "Назад",
-				Dock = DockStyle.Fill,
-				FlatStyle = FlatStyle.Flat,
 			};
 
 			Chapters.Items.Add("Создание карты");
@@ -78,9 +55,9 @@ namespace FactorioGuideProject
 			Chapters.Items.Add("Фиолетовая и желтая наука");
 			Chapters.Items.Add("Финал!");
 
-			var panel = Scheme.GetSiplePage(initialSlideLabel, initialSlideText);
+			var panel = GetSiplePage(initialSlideLabel, initialSlideText);
 
-			nextSlide.Click += (sender, args) =>
+			nextButton.Click += (sender, args) =>
 			{
 				Controls.Remove(panel);
 				currentPanel = currentPanel.Next;
@@ -88,14 +65,13 @@ namespace FactorioGuideProject
 				Controls.Add(panel);
 			};
 
-			prevSlide.Click += (sender, args) =>
+            prevButton.Click += (sender, args) =>
 			{
 				Controls.Remove(panel);
 				currentPanel = currentPanel.Previous;
 				panel = currentPanel.Value;
 				Controls.Add(panel);
 			};
-
 
 			Chapters.SelectedIndexChanged += (sender, args) =>
 			{
@@ -105,7 +81,11 @@ namespace FactorioGuideProject
 				switch (Chapters.SelectedIndex)
 				{
 					case 0://Создание карты
-						CurrentGroup = CreateGroupMapCreation(mapCreationLabel,GetMapCreationGroup(),nextSlide,prevSlide);
+						var MapCreationGroupText = GetMapCreationGroup();
+						CurrentGroup.Add(GetPageWithNextButton(MapCreationLabel, MapCreationGroupText[0], nextButton));
+						CurrentGroup.Add(GetPageWithTwoButtons(MapCreationLabel, MapCreationGroupText[1], nextButton, prevButton));
+						CurrentGroup.Add(GetPageWithTwoButtons(MapCreationLabel, MapCreationGroupText[2], nextButton, prevButton));
+						CurrentGroup.Add(GetPageWithPrevButton(MapCreationLabel, MapCreationGroupText[3], prevButton));
 						currentPanel = CurrentGroup.First();
 						panel = currentPanel.Value;
 						Controls.Add(panel);
@@ -132,7 +112,6 @@ namespace FactorioGuideProject
 					//	break;
 				}
 			};
-
 			Controls.Add(Chapters);
 			Controls.Add(panel);
 		}
