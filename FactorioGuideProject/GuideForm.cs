@@ -70,7 +70,7 @@ namespace FactorioGuideProject
 			Chapters.SelectedIndexChanged += (sender, args) =>
 			{
 				Controls.Remove(Panel);
-				Panel = Scheme.CreateNewTablePanel();
+				Panel = Scheme.CreateSimplePanel();
 
 				switch (Chapters.SelectedIndex)
 				{
