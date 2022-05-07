@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using static FactorioGuideProject.Scheme;
-
+using static FactorioGuideProject.GuideForm;
 
 namespace FactorioGuideProject
 {

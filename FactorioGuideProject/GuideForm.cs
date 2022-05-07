@@ -14,18 +14,7 @@ namespace FactorioGuideProject
 		TableLayoutPanel Panel;
 		public GuideForm()
         {
-			var nextButtons = new Button[30];
-			for(int i = 0; i < 30; i++)
-				nextButtons[i] = new Button { Text = "Далее", Dock = DockStyle.Fill, FlatStyle = FlatStyle.Flat, };
-			foreach (var button in nextButtons)
-				button.Click += (nextButtonClick);
-
-			var prevButtons = new Button[30];//можно ли как - то сделать одну универсальную кнопку вперед и назад и передавать её на все TableLayoutPanel?
-			for (int i = 0; i < 30; i++)
-				prevButtons[i] = new Button { Text = "Назад", Dock = DockStyle.Fill, FlatStyle = FlatStyle.Flat, };
-			foreach (var button in prevButtons)
-				button.Click += (prevButtonClick);
-
+			DoubleBuffered = true;
 			var initialSlideLabel = new Label
 			{
 				Text = "Введение"
@@ -76,10 +65,10 @@ namespace FactorioGuideProject
 				{
 					case 0://Создание карты
 						var MapCreationGroupText = GetMapCreationGroup();
-						CurrentGroup.Add(GetPageWithNextButton(MapCreationLabel, MapCreationGroupText[0], nextButtons[0]));
-						CurrentGroup.Add(GetPageWithTwoButtons(MapCreationLabel, MapCreationGroupText[1], nextButtons[1], prevButtons[0]));
-						CurrentGroup.Add(GetPageWithTwoButtons(MapCreationLabel, MapCreationGroupText[2], nextButtons[2], prevButtons[1]));
-						CurrentGroup.Add(GetPageWithPrevButton(MapCreationLabel, MapCreationGroupText[3], prevButtons[2]));
+						CurrentGroup.Add(GetPageWithNextButton(MapCreationLabel, MapCreationGroupText[0], GetNextButton()));
+						CurrentGroup.Add(GetPageWithTwoButtons(MapCreationLabel, MapCreationGroupText[1], GetNextButton(), GetPrevButton()));
+						CurrentGroup.Add(GetPageWithTwoButtons(MapCreationLabel, MapCreationGroupText[2], GetNextButton(), GetPrevButton()));
+						CurrentGroup.Add(GetPageWithPrevButton(MapCreationLabel, MapCreationGroupText[3], GetPrevButton()));
 						currentPanel = CurrentGroup.First();
 						Panel = currentPanel.Value;
 						Controls.Add(Panel);
@@ -109,6 +98,7 @@ namespace FactorioGuideProject
 			Controls.Add(Chapters);
 			Controls.Add(Panel);
 		}
+
 		private void nextButtonClick(object sender, EventArgs e)
 		{
 			Controls.Remove(Panel);
@@ -116,12 +106,27 @@ namespace FactorioGuideProject
 			Panel = currentPanel.Value;
 			Controls.Add(Panel);
 		}
+
 		private void prevButtonClick(object sender, EventArgs e)
         {
 			Controls.Remove(Panel);
 			currentPanel = currentPanel.Previous;
 			Panel = currentPanel.Value;
 			Controls.Add(Panel);
+		}
+
+		private Button GetNextButton()
+        {
+			var nextButton = new Button { Text = "Далее", Dock = DockStyle.Fill, FlatStyle = FlatStyle.Flat, };
+			nextButton.Click += nextButtonClick;
+			return nextButton;
+		}
+
+		private Button GetPrevButton()
+        {
+			var prevButton = new Button { Text = "Назад", Dock = DockStyle.Fill, FlatStyle = FlatStyle.Flat, };
+			prevButton.Click += prevButtonClick;
+			return prevButton;
 		}
 	}
 }
