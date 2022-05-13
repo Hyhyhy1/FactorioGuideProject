@@ -1,9 +1,11 @@
-﻿using System.Windows.Forms;
+﻿using System.Drawing;
+using System.Windows.Forms;
 
 namespace FactorioGuideProject
 {
-    public static class Scheme
+    public class Scheme
     {
+		
 		/// <summary>
 		/// стандартный макет таблицы слайда
 		/// </summary>
@@ -78,21 +80,21 @@ namespace FactorioGuideProject
 		public static TableLayoutPanel GetSiplePage(Label label, TextBox text)
         {
 			var panel = CreateSimplePanel();
-			panel.Controls.Add(new Panel(), 0, 0);
-			panel.Controls.Add(new Panel(), 0, 1);
-			panel.Controls.Add(new Panel(), 0, 2);
-			panel.Controls.Add(new Panel(), 0, 3); 
-			panel.Controls.Add(new Panel(), 0, 4);
-			panel.Controls.Add(new Panel(), 1, 0);
+			panel.Controls.Add(GetPlaceholder(), 0, 0);
+			panel.Controls.Add(GetPlaceholder(), 0, 1);
+			panel.Controls.Add(GetPlaceholder(), 0, 2);
+			panel.Controls.Add(GetPlaceholder(), 0, 3); 
+			panel.Controls.Add(GetPlaceholder(), 0, 4);
+			panel.Controls.Add(GetPlaceholder(), 1, 0);
 			panel.Controls.Add(label, 1, 1);
 			panel.Controls.Add(text, 1, 2);
-			panel.Controls.Add(new Panel(), 1, 3);
-			panel.Controls.Add(new Panel(), 1, 4);
-			panel.Controls.Add(new Panel(), 2, 0);
-			panel.Controls.Add(new Panel(), 2, 1);
-			panel.Controls.Add(new Panel(), 2, 2);
-			panel.Controls.Add(new Panel(), 2, 3);
-			panel.Controls.Add(new Panel(), 2, 4);
+			panel.Controls.Add(GetPlaceholder(), 1, 3);
+			panel.Controls.Add(GetPlaceholder(), 1, 4);
+			panel.Controls.Add(GetPlaceholder(), 2, 0);
+			panel.Controls.Add(GetPlaceholder(), 2, 1);
+			panel.Controls.Add(GetPlaceholder(), 2, 2);
+			panel.Controls.Add(GetPlaceholder(), 2, 3);
+			panel.Controls.Add(GetPlaceholder(), 2, 4);
 			return panel;
 		}
 
@@ -106,21 +108,21 @@ namespace FactorioGuideProject
 		public static TableLayoutPanel GetPageWithNextButton(Label label, TextBox text, Button nextSlide)
         {
 			var panel = CreateSimplePanel();
-			panel.Controls.Add(new Panel(), 0, 0);
-			panel.Controls.Add(new Panel(), 0, 1);
-			panel.Controls.Add(new Panel(), 0, 2);
-			panel.Controls.Add(new Panel(), 0, 3);
-			panel.Controls.Add(new Panel(), 0, 4);
-			panel.Controls.Add(new Panel(), 1, 0);
+			panel.Controls.Add(GetPlaceholder(), 0, 0);
+			panel.Controls.Add(GetPlaceholder(), 0, 1);
+			panel.Controls.Add(GetPlaceholder(), 0, 2);
+			panel.Controls.Add(GetPlaceholder(), 0, 3);
+			panel.Controls.Add(GetPlaceholder(), 0, 4);
+			panel.Controls.Add(GetPlaceholder(), 1, 0);
 			panel.Controls.Add(label, 1, 1);
 			panel.Controls.Add(text, 1, 2);
-			panel.Controls.Add(new Panel(), 1, 3);
-			panel.Controls.Add(new Panel(), 1, 4);
-			panel.Controls.Add(new Panel(), 2, 0);
-			panel.Controls.Add(new Panel(), 2, 1);
-			panel.Controls.Add(new Panel(), 2, 2);
+			panel.Controls.Add(GetPlaceholder(), 1, 3);
+			panel.Controls.Add(GetPlaceholder(), 1, 4);
+			panel.Controls.Add(GetPlaceholder(), 2, 0);
+			panel.Controls.Add(GetPlaceholder(), 2, 1);
+			panel.Controls.Add(GetPlaceholder(), 2, 2);
 			panel.Controls.Add(nextSlide, 2, 3);
-			panel.Controls.Add(new Panel(), 2, 4);
+			panel.Controls.Add(GetPlaceholder(), 2, 4);
 			return panel;
 		}
 
@@ -184,21 +186,21 @@ namespace FactorioGuideProject
 		public static TableLayoutPanel GetDificultSlide(Label label, Label text, Button nextButton, Button prevButton, Button first, Button second, Button third)
         {
 			var panel = CreateSimplePanel();
-			panel.Controls.Add(new Panel(), 0, 0);
-			panel.Controls.Add(new Panel(), 0, 1);
-			panel.Controls.Add(new Panel(), 0, 2);
-			panel.Controls.Add(new Panel(), 0, 3);
-			panel.Controls.Add(new Panel(), 0, 4);
-			panel.Controls.Add(new Panel(), 1, 0);
+			panel.Controls.Add(GetPlaceholder(), 0, 0);
+			panel.Controls.Add(GetPlaceholder(), 0, 1);
+			panel.Controls.Add(GetPlaceholder(), 0, 2);
+			panel.Controls.Add(GetPlaceholder(), 0, 3);
+			panel.Controls.Add(GetPlaceholder(), 0, 4);
+			panel.Controls.Add(GetPlaceholder(), 1, 0);
 			panel.Controls.Add(label, 1, 1);
 			panel.Controls.Add(GetTextAndThreeButtons(text, first, second, third), 1, 2);
 			panel.Controls.Add(GetTwoButtonsRow(nextButton,prevButton), 1, 3);
-			panel.Controls.Add(new Panel(), 1, 4);
-			panel.Controls.Add(new Panel(), 2, 0);
-			panel.Controls.Add(new Panel(), 2, 1);
-			panel.Controls.Add(new Panel(), 2, 2);
-			panel.Controls.Add(new Panel(), 2, 3);
-			panel.Controls.Add(new Panel(), 2, 4);
+			panel.Controls.Add(GetPlaceholder(), 1, 4);
+			panel.Controls.Add(GetPlaceholder(), 2, 0);
+			panel.Controls.Add(GetPlaceholder(), 2, 1);
+			panel.Controls.Add(GetPlaceholder(), 2, 2);
+			panel.Controls.Add(GetPlaceholder(), 2, 3);
+			panel.Controls.Add(GetPlaceholder(), 2, 4);
 			return panel;
 		}
 
@@ -228,6 +230,17 @@ namespace FactorioGuideProject
 			panel.Controls.Add(first, 1, 0);
 			panel.Controls.Add(second, 1, 1);
 			panel.Controls.Add(third, 1, 2);
+			return panel;
+		}
+
+		/// <summary>
+		/// Конструктор плейсхолдеров
+		/// </summary>
+		/// <returns>Возвращает празрачный Panel для таблиц</returns>
+		private static Panel GetPlaceholder()
+        {
+			var panel = new Panel();
+			panel.BackColor = Color.Transparent;
 			return panel;
 		}
 	}
