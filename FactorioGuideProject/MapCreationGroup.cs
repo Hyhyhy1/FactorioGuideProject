@@ -9,21 +9,22 @@ namespace FactorioGuideProject
 
 	public class MapCreationGroup
 	{
-		public static Label MapCreationLabel { get { return new Label { Text = "Настройки мира игры" }; } }
-		public static TextBox[] GetMapCreationGroup()
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public static Label[] GetMapCreationGroup()
 		{
-			List<TextBox> MapCreationGroupText = new List<TextBox>();
-			MapCreationGroupText.Add(new TextBox()
+			var MapCreationGroupText = new List<Label>();
+			MapCreationGroupText.Add(new Label()
 			{
-				Multiline = true,
 				Text = "Генератор карты - это совокупность настроек, с помощью которых определяется, как будет выглядеть ваш мир после создания. " +
 				"Для новичков рекомендуется оставлять дефолтные настройки, мы тоже оставили, за исключением некоторых пунктов, о которых расскажем ниже.",
 				Dock = DockStyle.Fill,
 			});
 
-			MapCreationGroupText.Add(new TextBox()
+			MapCreationGroupText.Add(new Label()
 			{
-				Multiline = true,
 				Text = "Ресурсы." +
 				Environment.NewLine + "В данном разделе мы оставили все без изменений, но стоит поговорить о некоторых параметрах." +
 				Environment.NewLine + "Частота отвечает за то, как часто вы будете находить месторождения руды определенного типа." +
@@ -31,9 +32,8 @@ namespace FactorioGuideProject
 				Dock = DockStyle.Fill,
 			});
 
-			MapCreationGroupText.Add(new TextBox()
+			MapCreationGroupText.Add(new Label()
 			{
-				Multiline = true,
 				Text = "Ландшафт." +
 				Environment.NewLine + "В данном разделе мы также остались  при заводских настройках, кроме скал." +
 				Environment.NewLine + "Они мешают постройке больших систем, и передвижению, а также их невозможно убрать на ранних этапах игры." +
@@ -41,9 +41,8 @@ namespace FactorioGuideProject
 				Dock = DockStyle.Fill,
 			});
 
-			MapCreationGroupText.Add(new TextBox()
+			MapCreationGroupText.Add(new Label()
 			{
-				Multiline = true,
 				Text = "Враг." +
 				Environment.NewLine + "В этом разделе изменений коснулись “Экспансия врагов” и “Эволюция”." +
 				Environment.NewLine + 
@@ -60,6 +59,16 @@ namespace FactorioGuideProject
 			});
 
 			return MapCreationGroupText.ToArray();
+		}
+
+		public static Label[] GetMapCreationLabels()
+        {
+			var labels = new List<Label>();
+			labels.Add(new Label { Text = "Настройки мира игры" });
+			labels.Add(new Label { Text = "Ресурсы" });
+			labels.Add(new Label { Text = "Ландшафт" });
+			labels.Add(new Label { Text = "Противники" });
+			return labels.ToArray();
 		}
 	}
 }
