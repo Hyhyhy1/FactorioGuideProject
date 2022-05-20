@@ -83,8 +83,8 @@ namespace FactorioGuideProject
         {
 			var panel = CreatePanel1_2(40,60);
             var picture = new PictureBox{Image = bitmap};
-			//picture.Dock = DockStyle.Fill;
-			picture.SizeMode = PictureBoxSizeMode.AutoSize;
+			picture.Dock = DockStyle.Fill;
+			picture.SizeMode = PictureBoxSizeMode.Zoom;
             panel.Controls.Add(picture, 0, 0);
 			panel.Controls.Add(text, 1, 0);
 			return panel;

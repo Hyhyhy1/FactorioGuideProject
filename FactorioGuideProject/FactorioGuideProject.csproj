@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ResourcesGroup.cs" />
     <Compile Include="DoubleSideLinkedList.cs" />
     <Compile Include="FormTableConstructor.cs" />
     <Compile Include="MapCreationGroup.cs" />
