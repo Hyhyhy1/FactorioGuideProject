@@ -95,5 +95,32 @@
   <ItemGroup>
     <None Include="Pictures\Settings3.PNG" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Pictures\coal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Pictures\coper.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Pictures\fish.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Pictures\iron.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Pictures\oil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Pictures\stone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Pictures\uranium.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Pictures\water.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Pictures\wood.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

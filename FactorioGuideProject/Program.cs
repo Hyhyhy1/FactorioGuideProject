@@ -15,7 +15,7 @@ namespace FactorioGuideProject
             Application.SetCompatibleTextRenderingDefault(false);
             var GuideForm = new GuideForm();
             GuideForm.Text = "Гайд по Факторио";
-            GuideForm.Size = new System.Drawing.Size(650,600);
+            GuideForm.Size = new System.Drawing.Size(1360,700);
             Application.Run(GuideForm);
         }
     }

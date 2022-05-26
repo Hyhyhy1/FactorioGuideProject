@@ -22,7 +22,6 @@ namespace FactorioGuideProject
 
 			var initialSlideText = new Label()
 			{
-				//Multiline = true,
 				Text = "Добро пожаловать в наше приложение!" +
 				Environment.NewLine + "Данный интерактивный гайд поможет Вам разобраться в Factorio." +
 				Environment.NewLine + "Мы постарались сделать его максимально удобным и сконструированным." +
@@ -48,10 +47,8 @@ namespace FactorioGuideProject
 
 			Chapters.Items.Add("Создание карты");
 			Chapters.Items.Add("Первые шаги");
-			Chapters.Items.Add("Электричество");
-			Chapters.Items.Add("Первая автоматизация");
-			Chapters.Items.Add("Красная наука");
-			Chapters.Items.Add("Зеленая наука");
+			Chapters.Items.Add("Ресурсы");
+			Chapters.Items.Add("Начальная наука");
 			Chapters.Items.Add("Важность обороны");
 			Chapters.Items.Add("Синяя наука");
 			Chapters.Items.Add("Фиолетовая и желтая наука");
@@ -70,39 +67,40 @@ namespace FactorioGuideProject
 						CurrentGroup.Add(GetDificultSlide
                             (MapCreationLabels[0], MapCreationGroupText[0], GetNextButton(), GetPrevButton(), GetNextButton(1,"Ресурсы"), GetNextButton(2,"Ландшафт"), GetNextButton(3,"Противники")));
                         CurrentGroup.Add(GetPageWithTextAndPicture(MapCreationLabels[1], MapCreationGroupText[1],GetNextButton(),GetPrevButton(), Resource1.Settings1));
-                        //CurrentGroup.Add(GetPageWithTwoButtons(MapCreationLabels[1], MapCreationGroupText[1], GetNextButton(), GetPrevButton()));
-                        CurrentGroup.Add(GetPageWithTwoButtons(MapCreationLabels[2], MapCreationGroupText[2], GetNextButton(), GetPrevButton()));
+                        CurrentGroup.Add(GetPageWithTextAndPicture(MapCreationLabels[2], MapCreationGroupText[2], GetNextButton(), GetPrevButton(), Resource1.Settings2));
                         CurrentGroup.Add(GetPageWithPrevButton(MapCreationLabels[3], MapCreationGroupText[3], GetPrevButton()));
 						currentPanel = CurrentGroup.First();
 						Panel = currentPanel.Value;
 						Controls.Add(Panel);
 						break;
 
-					//case 1://Первые шаги
-					//	Scheme.GetPageWithNextButton(panel, firstStepsLabel, firstStepsText0, nextSlide);
-					//	Controls.Add(panel);
-					//	break;
+                    //case 1://Первые шаги
+                    //	Scheme.GetPageWithNextButton(panel, firstStepsLabel, firstStepsText0, nextSlide);
+                    //	Controls.Add(panel);
+                    //	break;
 
-					//case 2://Электричество
-					//	Scheme.GetPageWithNextButton(panel, electricityLabel, electricityText0, nextSlide);
-					//	Controls.Add(panel);
-					//	break;
+                    case 2://Ресурсы
+						CurrentGroup.Clear();
+						var resourcesGroupTexts = ResourcesGroup.GetResourcesGroupTexts();
+						var resourcesGroupLabels = ResourcesGroup.GetResourcesGroupLables();
+						CurrentGroup.Add(GetResourcesMainSlide
+							(GetPictureBoxButton(Resource1.stone,1),GetPictureBoxButton(Resource1.wood,2),
+							GetPictureBoxButton(Resource1.coal,3),GetPictureBoxButton(Resource1.coper,4),
+							GetPictureBoxButton(Resource1.iron,5),GetPictureBoxButton(Resource1.water,6),
+							GetPictureBoxButton(Resource1.oil,7),GetPictureBoxButton(Resource1.uranium,8),GetPictureBoxButton(Resource1.fish,9)));
+                        CurrentGroup.Add(GetResource(Resource1.stone, resourcesGroupLabels[0], resourcesGroupTexts[0],GetPrevButton(1,"Назад")));
+						currentPanel = CurrentGroup.First();
+						Panel = currentPanel.Value;
+						Controls.Add(Panel);
+                        break;
 
-					//case 3://Первая автоматизация
-					//	Scheme.GetPageWithNextButton(panel, initialAutomationLabel, initialAutomationText0, nextSlide);
-					//	Controls.Add(panel);
-					//	break;
 
-					//case 4://Красная наука
-					//	Scheme.GetPageWithNextButton(panel, redScienceLabel, redScienceText0, nextSlide)
-					//	Controls.Add(panel);
-					//	break;
-				}
-			};
+                }
+            };
 			Controls.Add(Chapters);
 			Controls.Add(Panel);
 		}
-
+				
 		private void nextButtonClick(object sender, EventArgs e)
 		{
 			Controls.Remove(Panel);
@@ -140,6 +138,7 @@ namespace FactorioGuideProject
         {
 			var nextButton = new Button { Text = text, Dock = DockStyle.Fill, FlatStyle = FlatStyle.Flat, };
 			nextButton.BackColor = Color.Transparent;
+			nextButton.ForeColor = Color.Transparent;
 			nextButton.Font = new Font(nextButton.Font, FontStyle.Bold);
 			nextButton.UseCompatibleTextRendering = true;
 			for (int i = 0; i < stepsCount; i++)
@@ -154,5 +153,27 @@ namespace FactorioGuideProject
 			prevButton.Click += prevButtonClick;
 			return prevButton;
 		}
+
+		private Button GetPrevButton(int stepsCount, string text)
+		{
+			var prevButton = new Button { Text = text, Dock = DockStyle.Fill, FlatStyle = FlatStyle.Flat, };
+			prevButton.BackColor = Color.Transparent;
+			prevButton.ForeColor = Color.Transparent;
+			//prevButton.Font = new Font(prevButton.Font, FontStyle.Bold);
+			prevButton.UseCompatibleTextRendering = true;
+			for (int i = 0; i < stepsCount; i++);
+				prevButton.Click += prevButtonClick;
+			return prevButton;
+		}
+
+		private PictureBox GetPictureBoxButton(Bitmap picture, int stepsCount)
+        {
+			var pictureBox = new PictureBox() {Image = picture};
+			pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+			pictureBox.Dock = DockStyle.Fill;
+			for (int i = 0; i < stepsCount; i++)
+				pictureBox.Click += nextButtonClick;
+			return pictureBox;
+        }
 	}
 }
