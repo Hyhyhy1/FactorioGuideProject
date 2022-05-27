@@ -331,7 +331,7 @@ namespace FactorioGuideProject
 			panel.Controls.Add(GetPlaceholder(), 0, 3);
 			panel.Controls.Add(GetPlaceholder(), 0, 4);
 			panel.Controls.Add(GetPlaceholder(), 1, 0);
-			panel.Controls.Add(new Label(){ Text = "Ресурсы"}, 1, 1);
+			panel.Controls.Add(new Label(){ Text = "Ресурсы", Anchor = AnchorStyles.Top}, 1, 1);
 			panel.Controls.Add(GetResources(stone, wood, coal, coper, iron, water, oil, uranium, fish), 1, 2);
 			panel.Controls.Add(GetPlaceholder(), 1, 3);
 			panel.Controls.Add(GetPlaceholder(), 1, 4);

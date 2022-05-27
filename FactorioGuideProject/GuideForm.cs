@@ -89,6 +89,14 @@ namespace FactorioGuideProject
 							GetPictureBoxButton(Resource1.iron,5),GetPictureBoxButton(Resource1.water,6),
 							GetPictureBoxButton(Resource1.oil,7),GetPictureBoxButton(Resource1.uranium,8),GetPictureBoxButton(Resource1.fish,9)));
                         CurrentGroup.Add(GetResource(Resource1.stone, resourcesGroupLabels[0], resourcesGroupTexts[0],GetPrevButton(1,"Назад")));
+                        CurrentGroup.Add(GetResource(Resource1.wood, resourcesGroupLabels[1], resourcesGroupTexts[1], GetPrevButton(2, "Назад")));
+						CurrentGroup.Add(GetResource(Resource1.coal, resourcesGroupLabels[2], resourcesGroupTexts[2], GetPrevButton(3, "Назад")));
+						CurrentGroup.Add(GetResource(Resource1.coper, resourcesGroupLabels[3], resourcesGroupTexts[3], GetPrevButton(4, "Назад")));
+						CurrentGroup.Add(GetResource(Resource1.iron, resourcesGroupLabels[4], resourcesGroupTexts[4], GetPrevButton(5, "Назад")));
+						CurrentGroup.Add(GetResource(Resource1.water, resourcesGroupLabels[5], resourcesGroupTexts[5], GetPrevButton(6, "Назад")));
+						CurrentGroup.Add(GetResource(Resource1.oil, resourcesGroupLabels[6], resourcesGroupTexts[6], GetPrevButton(7, "Назад")));
+						CurrentGroup.Add(GetResource(Resource1.uranium, resourcesGroupLabels[7], resourcesGroupTexts[7], GetPrevButton(8, "Назад")));
+						CurrentGroup.Add(GetResource(Resource1.fish, resourcesGroupLabels[8], resourcesGroupTexts[8], GetPrevButton(9, "Назад")));
 						currentPanel = CurrentGroup.First();
 						Panel = currentPanel.Value;
 						Controls.Add(Panel);
@@ -159,9 +167,9 @@ namespace FactorioGuideProject
 			var prevButton = new Button { Text = text, Dock = DockStyle.Fill, FlatStyle = FlatStyle.Flat, };
 			prevButton.BackColor = Color.Transparent;
 			prevButton.ForeColor = Color.Transparent;
-			//prevButton.Font = new Font(prevButton.Font, FontStyle.Bold);
+			prevButton.Font = new Font(prevButton.Font, FontStyle.Bold);
 			prevButton.UseCompatibleTextRendering = true;
-			for (int i = 0; i < stepsCount; i++);
+			for (int i = 0; i < stepsCount; i++)
 				prevButton.Click += prevButtonClick;
 			return prevButton;
 		}
