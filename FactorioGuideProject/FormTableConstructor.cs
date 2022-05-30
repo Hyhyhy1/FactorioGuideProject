@@ -45,6 +45,21 @@ namespace FactorioGuideProject
 			return panel;
 		}
 
+		private static TableLayoutPanel CreateDefencePanel()
+        {
+			var panel = new TableLayoutPanel();
+			panel.BackColor = Color.LightGreen;
+			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 15));
+			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 70));
+			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 15));
+			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10));
+			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30));
+			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40));
+			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20));
+			panel.Dock = DockStyle.Fill;
+			return panel;
+		}
+
 		/// <summary>
 		/// таблица с 1й строкой и 3мя колонками
 		/// </summary>
@@ -56,6 +71,33 @@ namespace FactorioGuideProject
 			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25));
 			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50));
 			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25));
+			panel.Dock = DockStyle.Fill;
+			return panel;
+		}
+
+		/// <summary>
+		/// таблица с 3мя строками и 1й колонкой
+		/// </summary>
+		/// <returns></returns>
+		public static TableLayoutPanel CreatePanel3_1()
+        {
+			var panel = new TableLayoutPanel();
+			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
+			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 33));
+			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 33));
+			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 33));
+			panel.Dock = DockStyle.Fill;
+			return panel;
+		}
+
+		public static TableLayoutPanel CreatePanel4_1()
+        {
+			var panel = new TableLayoutPanel();
+			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
+			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 25));
+			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 25));
+			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 25));
+			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 25));
 			panel.Dock = DockStyle.Fill;
 			return panel;
 		}
@@ -115,6 +157,21 @@ namespace FactorioGuideProject
 		}
 
 		/// <summary>
+		/// таблица с 2мя строками и 2мя столбцами
+		/// </summary>
+		/// <returns></returns>
+		public static TableLayoutPanel CreatePanel2_2()
+        {
+			TableLayoutPanel panel = new TableLayoutPanel();
+			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 75));
+			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 25));
+			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20));
+			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 80));
+			panel.Dock = DockStyle.Fill;
+			return panel;
+		}
+
+		/// <summary>
 		/// таблица с 4мя строками и 2мя колонками
 		/// </summary>
 		/// <returns></returns>
@@ -145,7 +202,6 @@ namespace FactorioGuideProject
 			panel.Controls.Add(text, 1, 0);
 			return panel;
 		}
-
 
 		/// <summary>
 		/// Этот метод создает слайд с картинкой и тестом
@@ -358,6 +414,39 @@ namespace FactorioGuideProject
 			return panel;
         }
 
+		public static TableLayoutPanel GetItemSlide(Label label, Label text, Button prevButton)
+        {
+			var panel = CreateResourcePanel();
+			panel.Controls.Add(GetPlaceholder(), 0, 0);
+			panel.Controls.Add(GetPlaceholder(), 0, 1);
+			panel.Controls.Add(prevButton, 0, 2);
+			panel.Controls.Add(GetPlaceholder(), 1, 0);
+			panel.Controls.Add(GetLabelAndText(label, text), 1, 1);
+			panel.Controls.Add(GetPlaceholder(), 1, 2);
+			panel.Controls.Add(GetPlaceholder(), 2, 0);
+			panel.Controls.Add(GetPlaceholder(), 2, 1);
+			panel.Controls.Add(GetPlaceholder(), 2, 2);
+			return panel;
+		}
+
+		public static TableLayoutPanel GetDefenceGroupMainSlide(Bitmap picture, Label label, Label text, Button first, Button second, Button third, Button fourth)
+        {
+			var panel = CreateDefencePanel();
+			panel.Controls.Add(GetPlaceholder(), 0, 0);
+			panel.Controls.Add(GetPlaceholder(), 0, 1);
+			panel.Controls.Add(GetPlaceholder(), 0, 2);
+			panel.Controls.Add(GetPlaceholder(), 1, 0);
+			panel.Controls.Add(new PictureBox() { Image = picture, Dock = DockStyle.Fill }, 1, 1);
+			panel.Controls.Add(GetPlaceholder(), 1, 2);
+			panel.Controls.Add(label, 2, 0);
+			panel.Controls.Add(text, 2, 1);
+			panel.Controls.Add(GetPlaceholder(), 2, 2);
+			panel.Controls.Add(GetPlaceholder(), 3, 0);
+			panel.Controls.Add(GetFourButtons(first, second, third, fourth), 3, 1);
+			panel.Controls.Add(GetPlaceholder(), 3, 2);
+			return panel;
+		}
+
 		private static TableLayoutPanel GetTwoButtonsRow(Button nextButton, Button prevButton)
         {
 			var panel = CreatePanel1_3();
@@ -370,23 +459,39 @@ namespace FactorioGuideProject
 		private static TableLayoutPanel GetTextAndThreeButtons(Label text, Button first, Button second, Button third)
         {
 			var panel = CreatePanel1_2(40,60);
-			panel.Controls.Add(GetThreeButtons(first,second,third), 0, 0);
+			panel.Controls.Add(GetThreeButtonsWithSpaces(first,second,third), 0, 0);
 			panel.Controls.Add(text, 1, 0);
+			return panel;
+		}
+
+		private static TableLayoutPanel GetThreeButtonsWithSpaces(Button first, Button second, Button third)
+        {
+			var panel = CreatePanel2_2();
+			panel.Controls.Add(GetPlaceholder(), 0, 0);
+			panel.Controls.Add(GetThreeButtons(first, second, third), 0, 1);
+			panel.Controls.Add(GetPlaceholder(), 1, 0);
+			panel.Controls.Add(GetPlaceholder(), 1, 1);
 			return panel;
 		}
 
 		private static TableLayoutPanel GetThreeButtons(Button first, Button second, Button third)
         {
-			var panel = CreatePanel4_2();
-			panel.Controls.Add(GetPlaceholder(), 0, 0);
-			panel.Controls.Add(GetPlaceholder(), 0, 1);
-			panel.Controls.Add(GetPlaceholder(), 0, 2);
-			panel.Controls.Add(GetPlaceholder(), 0, 3);
-			panel.Controls.Add(first, 1, 0);
-			panel.Controls.Add(second, 1, 1);
-			panel.Controls.Add(third, 1, 2);
-			panel.Controls.Add(GetPlaceholder(), 1, 3);
+			var panel = CreatePanel3_1();
+			panel.Controls.Add(first, 0, 0);
+			panel.Controls.Add(second, 0, 1);
+			panel.Controls.Add(third, 0, 2);
 			return panel;
+		}
+
+		private static TableLayoutPanel GetFourButtons(Button first, Button second, Button third, Button fourth)
+        {
+			var panel = CreatePanel4_1();
+			panel.Controls.Add(first, 0, 0);
+			panel.Controls.Add(second, 0, 1);
+			panel.Controls.Add(third, 0, 2);
+			panel.Controls.Add(fourth, 0, 3);
+			return panel;
+
 		}
 
 		private static TableLayoutPanel GetLabelAndText(Label label, Label text)

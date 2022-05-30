@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DefenceGroup.cs" />
     <Compile Include="ResourcesGroup.cs" />
     <Compile Include="DoubleSideLinkedList.cs" />
     <Compile Include="FormTableConstructor.cs" />
@@ -121,6 +122,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Pictures\wood.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Pictures\Жуки.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -102,8 +102,21 @@ namespace FactorioGuideProject
 						Controls.Add(Panel);
                         break;
 
-
-                }
+					case 4: //Важность обороны
+						CurrentGroup.Clear();
+						var defenceGroupTexts = DefenceGroup.GetDefenceGroupTexts();
+						var defenceGroupLabels = DefenceGroup.GetDefenceGroupLabels();
+						CurrentGroup.Add(GetDefenceGroupMainSlide(Resource1.Жуки, defenceGroupLabels[0], defenceGroupTexts[0],
+							GetNextButton(1, "Оружие"), GetNextButton(2, "Турели"), GetNextButton(3, "Гранаты"), GetNextButton(4, "Броня")));
+                        CurrentGroup.Add(GetItemSlide(defenceGroupLabels[1], defenceGroupTexts[1], GetPrevButton(1, "Назад")));
+						CurrentGroup.Add(GetItemSlide(defenceGroupLabels[2], defenceGroupTexts[2], GetPrevButton(2, "Назад")));
+						CurrentGroup.Add(GetItemSlide(defenceGroupLabels[3], defenceGroupTexts[3], GetPrevButton(3, "Назад")));
+						CurrentGroup.Add(GetItemSlide(defenceGroupLabels[4], defenceGroupTexts[4], GetPrevButton(4, "Назад")));
+						currentPanel = CurrentGroup.First();
+						Panel = currentPanel.Value;
+						Controls.Add(Panel);
+						break;
+				}
             };
 			Controls.Add(Chapters);
 			Controls.Add(Panel);
