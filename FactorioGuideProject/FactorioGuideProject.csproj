@@ -61,6 +61,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource1.resx</DependentUpon>
     </Compile>
+    <Compile Include="TransportGroup.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -125,6 +126,33 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Pictures\Жуки.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Pictures\Armor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Pictures\grenade.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Pictures\guns.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Pictures\turret.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Pictures\Belts.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Pictures\Drones.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Pictures\Manipulator.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Pictures\Pipes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Pictures\Train.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

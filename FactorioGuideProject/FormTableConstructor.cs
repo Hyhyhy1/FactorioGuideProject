@@ -45,26 +45,26 @@ namespace FactorioGuideProject
 			return panel;
 		}
 
-		private static TableLayoutPanel CreateDefencePanel()
+        private static TableLayoutPanel CreateDefencePanel()
         {
-			var panel = new TableLayoutPanel();
-			panel.BackColor = Color.LightGreen;
-			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 15));
-			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 70));
-			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 15));
-			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10));
-			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30));
-			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40));
-			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20));
-			panel.Dock = DockStyle.Fill;
-			return panel;
-		}
+            var panel = new TableLayoutPanel();
+            panel.BackColor = Color.LightGreen;
+            panel.RowStyles.Add(new RowStyle(SizeType.Percent, 15));
+            panel.RowStyles.Add(new RowStyle(SizeType.Percent, 70));
+            panel.RowStyles.Add(new RowStyle(SizeType.Percent, 15));
+            panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10));
+            panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30));
+            panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40));
+            panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20));
+            panel.Dock = DockStyle.Fill;
+            return panel;
+        }
 
-		/// <summary>
-		/// таблица с 1й строкой и 3мя колонками
-		/// </summary>
-		/// <returns></returns>
-		public static TableLayoutPanel CreatePanel1_3()
+        /// <summary>
+        /// таблица с 1й строкой и 3мя колонками
+        /// </summary>
+        /// <returns></returns>
+        public static TableLayoutPanel CreatePanel1_3()
         {
 			TableLayoutPanel panel = new TableLayoutPanel();
 			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
@@ -108,7 +108,7 @@ namespace FactorioGuideProject
 		/// <param name="first"></param>
 		/// <param name="second"></param>
 		/// <returns></returns>
-		public static TableLayoutPanel CreatePanel1_2(int first, int second)
+		private static TableLayoutPanel CreatePanel1_2(int first, int second)
 		{
 			TableLayoutPanel panel = new TableLayoutPanel();
 			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
@@ -124,7 +124,7 @@ namespace FactorioGuideProject
 		/// <param name="first">ширина первой строки</param>
 		/// <param name="second">ширина второй строки</param>
 		/// <returns></returns>
-		public static TableLayoutPanel CreatePanel2_1(int first, int second)
+		private static TableLayoutPanel CreatePanel2_1(int first, int second)
         {
 			TableLayoutPanel panel = new TableLayoutPanel();
 			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
@@ -138,20 +138,46 @@ namespace FactorioGuideProject
 		/// таблица с 5ю строками и 6ю столбцами
 		/// </summary>
 		/// <returns></returns>
-		public static TableLayoutPanel CreatePanel5_6()
+		private static TableLayoutPanel CreatePanel5_6()
         {
 			TableLayoutPanel panel = new TableLayoutPanel();
+
 			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 20));
 			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 20));
 			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 20));
 			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 20));
 			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 20));
+
 			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15));
 			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 11));
 			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25));
 			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 11));
 			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25));
 			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15));
+
+			panel.Dock = DockStyle.Fill;
+			return panel;
+		}
+
+		/// <summary>
+		/// таблица с 3мя строками и 6ю столбцами
+		/// </summary>
+		/// <returns></returns>
+		private static TableLayoutPanel CreatePanel3_6()
+        {
+			var panel = new TableLayoutPanel();
+
+			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 20));
+			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 20));
+			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 20));
+
+			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15));
+			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15));
+			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 21));
+			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15));
+			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 21));
+			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15));
+
 			panel.Dock = DockStyle.Fill;
 			return panel;
 		}
@@ -160,7 +186,7 @@ namespace FactorioGuideProject
 		/// таблица с 2мя строками и 2мя столбцами
 		/// </summary>
 		/// <returns></returns>
-		public static TableLayoutPanel CreatePanel2_2()
+		private static TableLayoutPanel CreatePanel2_2()
         {
 			TableLayoutPanel panel = new TableLayoutPanel();
 			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 75));
@@ -175,7 +201,7 @@ namespace FactorioGuideProject
 		/// таблица с 4мя строками и 2мя колонками
 		/// </summary>
 		/// <returns></returns>
-		public static TableLayoutPanel CreatePanel4_2()
+		private static TableLayoutPanel CreatePanel4_2()
 		{
 			TableLayoutPanel panel = new TableLayoutPanel();
 			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 25));
@@ -192,7 +218,7 @@ namespace FactorioGuideProject
 		/// Этот метод создает таблицу с картинкой и текстом
 		/// </summary>
 		/// <returns></returns>
-		public static TableLayoutPanel CreateTextAndPicturePanel(Bitmap bitmap, Label text)
+		private static TableLayoutPanel CreateTextAndPicturePanel(Bitmap bitmap, Label text)
         {
 			var panel = CreatePanel1_2(40,60);
             var picture = new PictureBox{Image = bitmap};
@@ -399,6 +425,27 @@ namespace FactorioGuideProject
 			return panel;
 		}
 
+		public static TableLayoutPanel GetTransportMainSlide(PictureBox belt, PictureBox manipulator, PictureBox pipe, PictureBox train, PictureBox drone)
+        {
+			var panel = CreateSimplePanel();
+			panel.Controls.Add(GetPlaceholder(), 0, 0);
+			panel.Controls.Add(GetPlaceholder(), 0, 1);
+			panel.Controls.Add(GetPlaceholder(), 0, 2);
+			panel.Controls.Add(GetPlaceholder(), 0, 3);
+			panel.Controls.Add(GetPlaceholder(), 0, 4);
+			panel.Controls.Add(GetPlaceholder(), 1, 0);
+			panel.Controls.Add(new Label() { Text = "Транспортировка", AutoSize = true, Anchor = AnchorStyles.Top }, 1, 1);
+			panel.Controls.Add(GetTransport(belt, manipulator, pipe, train, drone), 1, 2);
+			panel.Controls.Add(GetPlaceholder(), 1, 3);
+			panel.Controls.Add(GetPlaceholder(), 1, 4);
+			panel.Controls.Add(GetPlaceholder(), 2, 0);
+			panel.Controls.Add(GetPlaceholder(), 2, 1);
+			panel.Controls.Add(GetPlaceholder(), 2, 2);
+			panel.Controls.Add(GetPlaceholder(), 2, 3);
+			panel.Controls.Add(GetPlaceholder(), 2, 4);
+			return panel;
+		}
+
 		public static TableLayoutPanel GetResource(Bitmap picture,Label label, Label text, Button prevButton)
         {
 			var panel = CreateResourcePanel();
@@ -413,21 +460,6 @@ namespace FactorioGuideProject
 			panel.Controls.Add(GetPlaceholder(), 2, 2);
 			return panel;
         }
-
-		public static TableLayoutPanel GetItemSlide(Label label, Label text, Button prevButton)
-        {
-			var panel = CreateResourcePanel();
-			panel.Controls.Add(GetPlaceholder(), 0, 0);
-			panel.Controls.Add(GetPlaceholder(), 0, 1);
-			panel.Controls.Add(prevButton, 0, 2);
-			panel.Controls.Add(GetPlaceholder(), 1, 0);
-			panel.Controls.Add(GetLabelAndText(label, text), 1, 1);
-			panel.Controls.Add(GetPlaceholder(), 1, 2);
-			panel.Controls.Add(GetPlaceholder(), 2, 0);
-			panel.Controls.Add(GetPlaceholder(), 2, 1);
-			panel.Controls.Add(GetPlaceholder(), 2, 2);
-			return panel;
-		}
 
 		public static TableLayoutPanel GetDefenceGroupMainSlide(Bitmap picture, Label label, Label text, Button first, Button second, Button third, Button fourth)
         {
@@ -468,8 +500,8 @@ namespace FactorioGuideProject
         {
 			var panel = CreatePanel2_2();
 			panel.Controls.Add(GetPlaceholder(), 0, 0);
-			panel.Controls.Add(GetThreeButtons(first, second, third), 0, 1);
-			panel.Controls.Add(GetPlaceholder(), 1, 0);
+			panel.Controls.Add(GetPlaceholder(), 0, 1);
+			panel.Controls.Add(GetThreeButtons(first, second, third), 1, 0);
 			panel.Controls.Add(GetPlaceholder(), 1, 1);
 			return panel;
 		}
@@ -537,6 +569,31 @@ namespace FactorioGuideProject
 			panel.Controls.Add(GetPlaceholder(), 5, 2);
 			panel.Controls.Add(GetPlaceholder(), 5, 3);
 			panel.Controls.Add(GetPlaceholder(), 5, 4);
+			return panel;
+		}
+
+		private static TableLayoutPanel GetTransport(PictureBox belt, PictureBox manipulator, PictureBox pipe, PictureBox train, PictureBox drone)
+        {
+			var panel = CreatePanel3_6();
+			var labels = TransportGroup.GetTransportGroupLabels();
+			panel.Controls.Add(GetPlaceholder(), 0, 0);
+			panel.Controls.Add(GetPlaceholder(), 0, 1);
+			panel.Controls.Add(GetPlaceholder(), 0, 2);
+			panel.Controls.Add(belt, 1, 0);
+			panel.Controls.Add(manipulator, 1, 1);
+			panel.Controls.Add(pipe, 1, 2);
+			panel.Controls.Add(labels[0], 2, 0);
+			panel.Controls.Add(labels[1], 2, 1);
+			panel.Controls.Add(labels[2], 2, 2);
+			panel.Controls.Add(train, 3, 0);
+			panel.Controls.Add(drone, 3, 1);
+			panel.Controls.Add(GetPlaceholder(), 3, 2);
+			panel.Controls.Add(labels[3], 4, 0);
+			panel.Controls.Add(labels[4], 4, 1);
+			panel.Controls.Add(GetPlaceholder(), 4, 2);
+			panel.Controls.Add(GetPlaceholder(), 5, 0);
+			panel.Controls.Add(GetPlaceholder(), 5, 1);
+			panel.Controls.Add(GetPlaceholder(), 5, 2);
 			return panel;
 		}
 

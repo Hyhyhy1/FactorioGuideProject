@@ -48,6 +48,7 @@ namespace FactorioGuideProject
 			Chapters.Items.Add("Создание карты");
 			Chapters.Items.Add("Первые шаги");
 			Chapters.Items.Add("Ресурсы");
+			Chapters.Items.Add("Транспортировка предметов");
 			Chapters.Items.Add("Начальная наука");
 			Chapters.Items.Add("Важность обороны");
 			Chapters.Items.Add("Синяя наука");
@@ -62,13 +63,15 @@ namespace FactorioGuideProject
 				switch (Chapters.SelectedIndex)
 				{
 					case 0://Создание карты
-						var MapCreationGroupText = GetMapCreationGroup();
+                        var MapCreationGroupText = GetMapCreationGroup();
 						var MapCreationLabels = GetMapCreationLabels();
+
 						CurrentGroup.Add(GetDificultSlide
                             (MapCreationLabels[0], MapCreationGroupText[0], GetNextButton(), GetPrevButton(), GetNextButton(1,"Ресурсы"), GetNextButton(2,"Ландшафт"), GetNextButton(3,"Противники")));
                         CurrentGroup.Add(GetPageWithTextAndPicture(MapCreationLabels[1], MapCreationGroupText[1],GetNextButton(),GetPrevButton(), Resource1.Settings1));
                         CurrentGroup.Add(GetPageWithTextAndPicture(MapCreationLabels[2], MapCreationGroupText[2], GetNextButton(), GetPrevButton(), Resource1.Settings2));
-                        CurrentGroup.Add(GetPageWithPrevButton(MapCreationLabels[3], MapCreationGroupText[3], GetPrevButton()));
+                        CurrentGroup.Add(GetPageWithTextAndPicture(MapCreationLabels[3], MapCreationGroupText[3], GetPrevButton(), GetPrevButton(), Resource1.Settings3));
+
 						currentPanel = CurrentGroup.First();
 						Panel = currentPanel.Value;
 						Controls.Add(Panel);
@@ -83,8 +86,9 @@ namespace FactorioGuideProject
 						CurrentGroup.Clear();
 						var resourcesGroupTexts = ResourcesGroup.GetResourcesGroupTexts();
 						var resourcesGroupLabels = ResourcesGroup.GetResourcesGroupLables();
-						CurrentGroup.Add(GetResourcesMainSlide
-							(GetPictureBoxButton(Resource1.stone,1),GetPictureBoxButton(Resource1.wood,2),
+
+						CurrentGroup.Add(GetResourcesMainSlide(
+							GetPictureBoxButton(Resource1.stone,1),GetPictureBoxButton(Resource1.wood,2),
 							GetPictureBoxButton(Resource1.coal,3),GetPictureBoxButton(Resource1.coper,4),
 							GetPictureBoxButton(Resource1.iron,5),GetPictureBoxButton(Resource1.water,6),
 							GetPictureBoxButton(Resource1.oil,7),GetPictureBoxButton(Resource1.uranium,8),GetPictureBoxButton(Resource1.fish,9)));
@@ -97,21 +101,44 @@ namespace FactorioGuideProject
 						CurrentGroup.Add(GetResource(Resource1.oil, resourcesGroupLabels[6], resourcesGroupTexts[6], GetPrevButton(7, "Назад")));
 						CurrentGroup.Add(GetResource(Resource1.uranium, resourcesGroupLabels[7], resourcesGroupTexts[7], GetPrevButton(8, "Назад")));
 						CurrentGroup.Add(GetResource(Resource1.fish, resourcesGroupLabels[8], resourcesGroupTexts[8], GetPrevButton(9, "Назад")));
+
 						currentPanel = CurrentGroup.First();
 						Panel = currentPanel.Value;
 						Controls.Add(Panel);
                         break;
 
-					case 4: //Важность обороны
+					case 3://Транспортировка
+						CurrentGroup.Clear();
+						var transportGroupTexts = TransportGroup.GetTransportGroupTexts();
+						var transportGroupLabels = TransportGroup.GetTransportGroupLabels();
+
+						CurrentGroup.Add(GetTransportMainSlide(
+							GetPictureBoxButton(Resource1.Belts, 1), GetPictureBoxButton(Resource1.Manipulator, 2),
+							GetPictureBoxButton(Resource1.Pipes, 3), GetPictureBoxButton(Resource1.Train, 4), GetPictureBoxButton(Resource1.Drones, 5)));
+						CurrentGroup.Add(GetResource(Resource1.Belts, transportGroupLabels[0], transportGroupTexts[0], GetPrevButton(1, "Назад")));
+						CurrentGroup.Add(GetResource(Resource1.Manipulator, transportGroupLabels[1], transportGroupTexts[1], GetPrevButton(2, "Назад")));
+						CurrentGroup.Add(GetResource(Resource1.Pipes, transportGroupLabels[2], transportGroupTexts[2], GetPrevButton(3, "Назад")));
+						CurrentGroup.Add(GetResource(Resource1.Train, transportGroupLabels[3], transportGroupTexts[3], GetPrevButton(4, "Назад")));
+						CurrentGroup.Add(GetResource(Resource1.Drones, transportGroupLabels[4], transportGroupTexts[4], GetPrevButton(5, "Назад")));
+
+						currentPanel = CurrentGroup.First();
+						Panel = currentPanel.Value;
+						Controls.Add(Panel);
+						break;
+
+
+					case 5: //Важность обороны
 						CurrentGroup.Clear();
 						var defenceGroupTexts = DefenceGroup.GetDefenceGroupTexts();
 						var defenceGroupLabels = DefenceGroup.GetDefenceGroupLabels();
+
 						CurrentGroup.Add(GetDefenceGroupMainSlide(Resource1.Жуки, defenceGroupLabels[0], defenceGroupTexts[0],
 							GetNextButton(1, "Оружие"), GetNextButton(2, "Турели"), GetNextButton(3, "Гранаты"), GetNextButton(4, "Броня")));
-                        CurrentGroup.Add(GetItemSlide(defenceGroupLabels[1], defenceGroupTexts[1], GetPrevButton(1, "Назад")));
-						CurrentGroup.Add(GetItemSlide(defenceGroupLabels[2], defenceGroupTexts[2], GetPrevButton(2, "Назад")));
-						CurrentGroup.Add(GetItemSlide(defenceGroupLabels[3], defenceGroupTexts[3], GetPrevButton(3, "Назад")));
-						CurrentGroup.Add(GetItemSlide(defenceGroupLabels[4], defenceGroupTexts[4], GetPrevButton(4, "Назад")));
+                        CurrentGroup.Add(GetResource(Resource1.guns, defenceGroupLabels[1], defenceGroupTexts[1], GetPrevButton(1, "Назад")));
+						CurrentGroup.Add(GetResource(Resource1.turret, defenceGroupLabels[2], defenceGroupTexts[2], GetPrevButton(2, "Назад")));
+						CurrentGroup.Add(GetResource(Resource1.grenade, defenceGroupLabels[3], defenceGroupTexts[3], GetPrevButton(3, "Назад")));
+						CurrentGroup.Add(GetResource(Resource1.Armor, defenceGroupLabels[4], defenceGroupTexts[4], GetPrevButton(4, "Назад")));
+
 						currentPanel = CurrentGroup.First();
 						Panel = currentPanel.Value;
 						Controls.Add(Panel);
@@ -159,7 +186,7 @@ namespace FactorioGuideProject
         {
 			var nextButton = new Button { Text = text, Dock = DockStyle.Fill, FlatStyle = FlatStyle.Flat, };
 			nextButton.BackColor = Color.Transparent;
-			nextButton.ForeColor = Color.Transparent;
+			//nextButton.ForeColor = Color.Transparent;
 			nextButton.Font = new Font(nextButton.Font, FontStyle.Bold);
 			nextButton.UseCompatibleTextRendering = true;
 			for (int i = 0; i < stepsCount; i++)
@@ -179,7 +206,7 @@ namespace FactorioGuideProject
 		{
 			var prevButton = new Button { Text = text, Dock = DockStyle.Fill, FlatStyle = FlatStyle.Flat, };
 			prevButton.BackColor = Color.Transparent;
-			prevButton.ForeColor = Color.Transparent;
+			//prevButton.ForeColor = Color.Transparent;
 			prevButton.Font = new Font(prevButton.Font, FontStyle.Bold);
 			prevButton.UseCompatibleTextRendering = true;
 			for (int i = 0; i < stepsCount; i++)
