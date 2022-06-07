@@ -14,7 +14,8 @@ namespace FactorioGuideProject
 		public static TableLayoutPanel CreateSimplePanel()
         {
 			TableLayoutPanel panel = new TableLayoutPanel();
-			panel.BackColor = Color.LightGreen;
+			panel.RowCount = 5;
+			panel.ColumnCount = 3;
 			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 5));
 			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 5));
 			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 80));
@@ -24,6 +25,44 @@ namespace FactorioGuideProject
 			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 78));
 			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 11));
 			panel.Dock = DockStyle.Fill;
+			
+			return panel;
+
+		}
+		private static TableLayoutPanel CreateSettingsPanel()
+        {
+			var panel = new TableLayoutPanel();
+			panel.RowCount = 4;
+			panel.ColumnCount = 5;
+			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 10));
+			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 80));
+			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 7));
+			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 3));
+			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 11));
+			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 22));
+			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 18));
+			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 38));
+			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 11));
+			panel.Dock = DockStyle.Fill;
+
+			return panel;
+		}
+
+		private static TableLayoutPanel CreateResourcesMainPanel()
+        {
+			var panel = new TableLayoutPanel();
+			panel.RowCount = 4;
+			panel.ColumnCount = 3;
+
+			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 10));
+			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 10));
+			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 65));
+			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 15));
+			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20));
+			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 60));
+			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20));
+			panel.Dock = DockStyle.Fill;
+
 			return panel;
 		}
 
@@ -34,7 +73,9 @@ namespace FactorioGuideProject
 		private static TableLayoutPanel CreateResourcePanel()
         {
 			TableLayoutPanel panel = new TableLayoutPanel();
-			panel.BackColor = Color.LightGreen;
+			panel.RowCount = 3;
+			panel.ColumnCount = 3;
+
 			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 15));
 			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 70));
 			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 15));
@@ -48,12 +89,10 @@ namespace FactorioGuideProject
         private static TableLayoutPanel CreateDefencePanel()
         {
             var panel = new TableLayoutPanel();
-            panel.BackColor = Color.LightGreen;
             panel.RowStyles.Add(new RowStyle(SizeType.Percent, 15));
             panel.RowStyles.Add(new RowStyle(SizeType.Percent, 70));
             panel.RowStyles.Add(new RowStyle(SizeType.Percent, 15));
-            panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10));
-            panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30));
+            panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40));
             panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40));
             panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20));
             panel.Dock = DockStyle.Fill;
@@ -67,6 +106,7 @@ namespace FactorioGuideProject
         public static TableLayoutPanel CreatePanel1_3()
         {
 			TableLayoutPanel panel = new TableLayoutPanel();
+
 			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
 			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25));
 			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50));
@@ -191,8 +231,8 @@ namespace FactorioGuideProject
 			TableLayoutPanel panel = new TableLayoutPanel();
 			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 75));
 			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 25));
-			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20));
-			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 80));
+			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 60));
+			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40));
 			panel.Dock = DockStyle.Fill;
 			return panel;
 		}
@@ -241,21 +281,10 @@ namespace FactorioGuideProject
 		public static TableLayoutPanel GetPageWithTextAndPicture(Label label, Label text, Button nextButton, Button prevButton, Bitmap picture)
         {
 			var panel = CreateSimplePanel();
-			panel.Controls.Add(GetPlaceholder(), 0, 0);
-			panel.Controls.Add(GetPlaceholder(), 0, 1);
-			panel.Controls.Add(GetPlaceholder(), 0, 2);
 			panel.Controls.Add(prevButton, 0, 3);
-			panel.Controls.Add(GetPlaceholder(), 0, 4);
-			panel.Controls.Add(GetPlaceholder(), 1, 0);
 			panel.Controls.Add(label, 1, 1);
 			panel.Controls.Add(CreateTextAndPicturePanel(picture,text), 1, 2);
-			panel.Controls.Add(GetPlaceholder(), 1, 3);
-			panel.Controls.Add(GetPlaceholder(), 1, 4);
-			panel.Controls.Add(GetPlaceholder(), 2, 0);
-			panel.Controls.Add(GetPlaceholder(), 2, 1);
-			panel.Controls.Add(GetPlaceholder(), 2, 2);
 			panel.Controls.Add(nextButton, 2, 3);
-			panel.Controls.Add(GetPlaceholder(), 2, 4);
 			return panel;
 		}
 
@@ -265,253 +294,172 @@ namespace FactorioGuideProject
 		/// <param name="label">заголовок слайда</param>
 		/// <param name="text">текст слайда</param>
 		/// <returns></returns>
-		public static TableLayoutPanel GetSiplePage(Label label, Label text)
+		public static TableLayoutPanel GetSimplePage(Label label, Label text)
         {
 			var panel = CreateSimplePanel();
-			panel.Controls.Add(GetPlaceholder(), 0, 0);
-			panel.Controls.Add(GetPlaceholder(), 0, 1);
-			panel.Controls.Add(GetPlaceholder(), 0, 2);
-			panel.Controls.Add(GetPlaceholder(), 0, 3); 
-			panel.Controls.Add(GetPlaceholder(), 0, 4);
-			panel.Controls.Add(GetPlaceholder(), 1, 0);
+			panel.BackColor = FormColors.MainColor;
+
+			panel.BackgroundImage = Backgrounds.MainSlideBackground;
+			panel.BackgroundImageLayout = ImageLayout.Stretch;
+
+			panel.SuspendLayout();
 			panel.Controls.Add(label, 1, 1);
 			panel.Controls.Add(text, 1, 2);
-			panel.Controls.Add(GetPlaceholder(), 1, 3);
-			panel.Controls.Add(GetPlaceholder(), 1, 4);
-			panel.Controls.Add(GetPlaceholder(), 2, 0);
-			panel.Controls.Add(GetPlaceholder(), 2, 1);
-			panel.Controls.Add(GetPlaceholder(), 2, 2);
-			panel.Controls.Add(GetPlaceholder(), 2, 3);
-			panel.Controls.Add(GetPlaceholder(), 2, 4);
+			panel.ResumeLayout();
+
 			return panel;
 		}
 
 		/// <summary>
-		/// Конструктор начальный слайдов в разделе
+		/// Конструктор обычных слайдов для раздела "настройка"
 		/// </summary>
-		/// <param name="label">заголовок слайда</param>
-		/// <param name="text">текст слайда</param>
-		/// <param name="nextSlide">кнопка перехода вперед</param>
+		/// <param name="label">заголовок</param>
+		/// <param name="text">текс</param>
+		/// <param name="backround">фон</param>
+		/// <param name="prevButton">кнопка назад</param>
+		/// <param name="nextButton">кнопка вперед</param>
+		/// <param name="isLastSlide">маркер конца раздела</param>
 		/// <returns></returns>
-		public static TableLayoutPanel GetPageWithNextButton(Label label, Label text, Button nextSlide)
+		public static TableLayoutPanel GetSettingsSlide(Label label, Label text, Bitmap backround, Button prevButton, Button nextButton, bool isLastSlide)
         {
-			var panel = CreateSimplePanel();
-			panel.Controls.Add(GetPlaceholder(), 0, 0);
-			panel.Controls.Add(GetPlaceholder(), 0, 1);
-			panel.Controls.Add(GetPlaceholder(), 0, 2);
-			panel.Controls.Add(GetPlaceholder(), 0, 3);
-			panel.Controls.Add(GetPlaceholder(), 0, 4);
-			panel.Controls.Add(GetPlaceholder(), 1, 0);
-			panel.Controls.Add(label, 1, 1);
-			panel.Controls.Add(text, 1, 2);
-			panel.Controls.Add(GetPlaceholder(), 1, 3);
-			panel.Controls.Add(GetPlaceholder(), 1, 4);
-			panel.Controls.Add(GetPlaceholder(), 2, 0);
-			panel.Controls.Add(GetPlaceholder(), 2, 1);
-			panel.Controls.Add(GetPlaceholder(), 2, 2);
-			panel.Controls.Add(nextSlide, 2, 3);
-			panel.Controls.Add(GetPlaceholder(), 2, 4);
+			var panel = CreateSettingsPanel();
+			panel.BackColor = FormColors.MainColor;
+
+			panel.BackgroundImage = backround;
+			panel.BackgroundImageLayout = ImageLayout.Stretch;
+
+			var textPanel = CreatePanel2_1(15, 85);
+
+			label.Font = new Font("Intro", 22, FontStyle.Bold);
+			text.Font = new Font("Actor", 10, FontStyle.Bold);
+
+			textPanel.Controls.Add(label, 0, 0);
+			textPanel.Controls.Add(text, 0, 1);
+
+			panel.SuspendLayout();
+			panel.Controls.Add(prevButton, 0, 2);
+			panel.Controls.Add(textPanel, 3, 1);
+			if (!isLastSlide)
+				panel.Controls.Add(nextButton, 4, 2);
+			panel.ResumeLayout();
+
 			return panel;
 		}
 
 		/// <summary>
-		/// конструктор центральных слайдов в разделе
-		/// </summary>
-		/// <param name="label">заголовок слайда</param>
-		/// <param name="text">текст слайда</param>
-		/// <param name="nextSlide">кнопка перехода вперед</param>
-		/// <param name="prevSlide">кнопка перехода назад</param>
-		/// <returns></returns>
-		public static TableLayoutPanel GetPageWithTwoButtons(Label label, Label text, Button nextSlide, Button prevSlide)
-		{
-			var panel = CreateSimplePanel();
-			panel.Controls.Add(GetPlaceholder(), 0, 0);
-			panel.Controls.Add(GetPlaceholder(), 0, 1);
-			panel.Controls.Add(GetPlaceholder(), 0, 2);
-			panel.Controls.Add(prevSlide, 0, 3); 
-			panel.Controls.Add(GetPlaceholder(), 0, 4);
-			panel.Controls.Add(GetPlaceholder(), 1, 0);
-			panel.Controls.Add(label, 1, 1);
-			panel.Controls.Add(text, 1, 2);
-			panel.Controls.Add(GetPlaceholder(), 1, 3);
-			panel.Controls.Add(GetPlaceholder(), 1, 4);
-			panel.Controls.Add(GetPlaceholder(), 2, 0);
-			panel.Controls.Add(GetPlaceholder(), 2, 1);
-			panel.Controls.Add(GetPlaceholder(), 2, 2);
-			panel.Controls.Add(nextSlide, 2, 3);
-			panel.Controls.Add(GetPlaceholder(), 2, 4);
-			return panel;
-		}
-
-		/// <summary>
-		/// конструктор конечных слайдов разделов
-		/// </summary>
-		/// <param name="label">заголовок слайда</param>
-		/// <param name="text">текст слайда</param>
-		/// <param name="prevSlide">кнопка перехода назад</param>
-		/// <returns></returns>
-		public static TableLayoutPanel GetPageWithPrevButton(Label label, Label text, Button prevSlide)
-		{
-			var panel = CreateSimplePanel();
-			panel.Controls.Add(GetPlaceholder(), 0, 0);
-			panel.Controls.Add(GetPlaceholder(), 0, 1);
-			panel.Controls.Add(GetPlaceholder(), 0, 2);
-			panel.Controls.Add(prevSlide, 0, 3);
-			panel.Controls.Add(GetPlaceholder(), 0, 4);
-			panel.Controls.Add(GetPlaceholder(), 1, 0);
-			panel.Controls.Add(label, 1, 1);
-			panel.Controls.Add(text, 1, 2);
-			panel.Controls.Add(GetPlaceholder(), 1, 3);
-			panel.Controls.Add(GetPlaceholder(), 1, 4);
-			panel.Controls.Add(GetPlaceholder(), 2, 0);
-			panel.Controls.Add(GetPlaceholder(), 2, 1);
-			panel.Controls.Add(GetPlaceholder(), 2, 2);
-			panel.Controls.Add(GetPlaceholder(), 2, 3);
-			panel.Controls.Add(GetPlaceholder(), 2, 4);
-			return panel;
-		}
-
-		/// <summary>
-		/// конструктор начального слайда раздела
+		/// конструктор начального слайда раздела "настройка"
 		/// </summary>
 		/// <param name="label"></param>
 		/// <param name="text"></param>
 		/// <param name="nextButton"></param>
-		/// <param name="prevButton"></param>
 		/// <param name="first"></param>
 		/// <param name="second"></param>
 		/// <param name="third"></param>
 		/// <returns></returns>
-		public static TableLayoutPanel GetDificultSlide(Label label, Label text, Button nextButton, Button prevButton, Button first, Button second, Button third)
+		public static TableLayoutPanel GetDificultSlide(Label label, Label text, Button first, Button second, Button third, Button nextButton)
         {
-			var panel = CreateSimplePanel();
-			panel.Controls.Add(GetPlaceholder(), 0, 0);
-			panel.Controls.Add(GetPlaceholder(), 0, 1);
-			panel.Controls.Add(GetPlaceholder(), 0, 2);
-			panel.Controls.Add(GetPlaceholder(), 0, 3);
-			panel.Controls.Add(GetPlaceholder(), 0, 4);
-			panel.Controls.Add(GetPlaceholder(), 1, 0);
-			panel.Controls.Add(label, 1, 1);
-			panel.Controls.Add(GetTextAndThreeButtons(text, first, second, third), 1, 2);
-			panel.Controls.Add(GetTwoButtonsRow(nextButton,prevButton), 1, 3);
-			panel.Controls.Add(GetPlaceholder(), 1, 4);
-			panel.Controls.Add(GetPlaceholder(), 2, 0);
-			panel.Controls.Add(GetPlaceholder(), 2, 1);
-			panel.Controls.Add(GetPlaceholder(), 2, 2);
-			panel.Controls.Add(GetPlaceholder(), 2, 3);
-			panel.Controls.Add(GetPlaceholder(), 2, 4);
+			var panel = CreateSettingsPanel();
+			panel.BackColor = FormColors.MainColor;
+
+			panel.BackgroundImage = Backgrounds.SettingsBackground;
+			panel.BackgroundImageLayout = ImageLayout.Stretch;
+
+			var textPanel = CreatePanel2_1(15, 85);
+
+			label.Font = new Font("Intro", 22, FontStyle.Bold);
+			text.Font = new Font("Actor", 10, FontStyle.Bold);
+
+			textPanel.Controls.Add(label, 0, 0);
+			textPanel.Controls.Add(text, 0, 1);
+
+			panel.SuspendLayout();
+			panel.Controls.Add(GetThreeButtonsWithSpaces(first, second, third), 1, 1);
+			panel.Controls.Add(textPanel, 3, 1);
+			panel.Controls.Add(nextButton, 4, 2);
+			panel.ResumeLayout();
+
 			return panel;
 		}
 
 		public static TableLayoutPanel GetResourcesMainSlide(PictureBox stone, PictureBox wood, PictureBox coal, PictureBox coper,
 			PictureBox iron, PictureBox water, PictureBox oil, PictureBox uranium, PictureBox fish)
         {
-			var panel = CreateSimplePanel();
-			panel.Controls.Add(GetPlaceholder(), 0, 0);
-			panel.Controls.Add(GetPlaceholder(), 0, 1);
-			panel.Controls.Add(GetPlaceholder(), 0, 2);
-			panel.Controls.Add(GetPlaceholder(), 0, 3);
-			panel.Controls.Add(GetPlaceholder(), 0, 4);
-			panel.Controls.Add(GetPlaceholder(), 1, 0);
-			panel.Controls.Add(new Label(){ Text = "Ресурсы", Anchor = AnchorStyles.Top}, 1, 1);
+			var panel = CreateResourcesMainPanel();
+			panel.BackColor = FormColors.MainColor;
+
+			panel.BackgroundImage = Backgrounds.MainSlideBackground;
+			panel.BackgroundImageLayout = ImageLayout.Stretch;
+
+			var label = new Label() { Text = "Ресурсы", AutoSize = true, Anchor = AnchorStyles.Top, ForeColor = Color.White, Font = new Font("Intro", 20, FontStyle.Bold) };
+			panel.SuspendLayout();
+			panel.Controls.Add(label, 1, 1);
 			panel.Controls.Add(GetResources(stone, wood, coal, coper, iron, water, oil, uranium, fish), 1, 2);
-			panel.Controls.Add(GetPlaceholder(), 1, 3);
-			panel.Controls.Add(GetPlaceholder(), 1, 4);
-			panel.Controls.Add(GetPlaceholder(), 2, 0);
-			panel.Controls.Add(GetPlaceholder(), 2, 1);
-			panel.Controls.Add(GetPlaceholder(), 2, 2);
-			panel.Controls.Add(GetPlaceholder(), 2, 3);
-			panel.Controls.Add(GetPlaceholder(), 2, 4);
+			panel.ResumeLayout();
+
 			return panel;
 		}
 
 		public static TableLayoutPanel GetTransportMainSlide(PictureBox belt, PictureBox manipulator, PictureBox pipe, PictureBox train, PictureBox drone)
         {
-			var panel = CreateSimplePanel();
-			panel.Controls.Add(GetPlaceholder(), 0, 0);
-			panel.Controls.Add(GetPlaceholder(), 0, 1);
-			panel.Controls.Add(GetPlaceholder(), 0, 2);
-			panel.Controls.Add(GetPlaceholder(), 0, 3);
-			panel.Controls.Add(GetPlaceholder(), 0, 4);
-			panel.Controls.Add(GetPlaceholder(), 1, 0);
-			panel.Controls.Add(new Label() { Text = "Транспортировка", AutoSize = true, Anchor = AnchorStyles.Top }, 1, 1);
+			var panel = CreateResourcesMainPanel();
+			panel.BackColor = FormColors.MainColor;
+
+			panel.BackgroundImage = Backgrounds.MainSlideBackground;
+			panel.BackgroundImageLayout = ImageLayout.Stretch;
+
+			panel.Controls.Add(new Label() { Text = "Транспортировка", AutoSize = true, Anchor = AnchorStyles.Top, ForeColor = Color.White, Font = new Font("Intro", 20, FontStyle.Bold) }, 1, 1);
 			panel.Controls.Add(GetTransport(belt, manipulator, pipe, train, drone), 1, 2);
-			panel.Controls.Add(GetPlaceholder(), 1, 3);
-			panel.Controls.Add(GetPlaceholder(), 1, 4);
-			panel.Controls.Add(GetPlaceholder(), 2, 0);
-			panel.Controls.Add(GetPlaceholder(), 2, 1);
-			panel.Controls.Add(GetPlaceholder(), 2, 2);
-			panel.Controls.Add(GetPlaceholder(), 2, 3);
-			panel.Controls.Add(GetPlaceholder(), 2, 4);
 			return panel;
 		}
 
 		public static TableLayoutPanel GetResource(Bitmap picture,Label label, Label text, Button prevButton)
         {
 			var panel = CreateResourcePanel();
-			panel.Controls.Add(GetPlaceholder(),0,0);
-			panel.Controls.Add(new PictureBox() { Image = picture, Dock = DockStyle.Fill, Margin = new Padding(0) }, 0, 1);
+			panel.BackColor = FormColors.MainColor;
+
+			label.Font = new Font("Intro", 22, FontStyle.Bold);
+			text.Font = new Font("Actor", 10, FontStyle.Bold);
+
+			panel.SuspendLayout();
+			panel.Controls.Add(new Panel() { Dock = DockStyle.Fill, BackColor = FormColors.AccentColor, Margin = new Padding(0) }, 0, 0);
+			panel.Controls.Add(new PictureBox() { Image = picture, Dock = DockStyle.Fill, Margin = new Padding(0), SizeMode = PictureBoxSizeMode.StretchImage }, 0, 1);
 			panel.Controls.Add(prevButton,0,2);
-			panel.Controls.Add(GetPlaceholder(), 1, 0);
 			panel.Controls.Add(GetLabelAndText(label, text), 1, 1);
-			panel.Controls.Add(GetPlaceholder(), 1, 2);
-			panel.Controls.Add(GetPlaceholder(), 2, 0);
-			panel.Controls.Add(GetPlaceholder(), 2, 1);
-			panel.Controls.Add(GetPlaceholder(), 2, 2);
+			panel.ResumeLayout();
+
 			return panel;
         }
 
 		public static TableLayoutPanel GetDefenceGroupMainSlide(Bitmap picture, Label label, Label text, Button first, Button second, Button third, Button fourth)
         {
 			var panel = CreateDefencePanel();
-			panel.Controls.Add(GetPlaceholder(), 0, 0);
-			panel.Controls.Add(GetPlaceholder(), 0, 1);
-			panel.Controls.Add(GetPlaceholder(), 0, 2);
-			panel.Controls.Add(GetPlaceholder(), 1, 0);
-			panel.Controls.Add(new PictureBox() { Image = picture, Dock = DockStyle.Fill }, 1, 1);
+			panel.BackColor = FormColors.MainColor;
+
+			panel.BackgroundImage = Backgrounds.DefenceSlideBackground;
+			panel.BackgroundImageLayout = ImageLayout.Stretch;
+
+			var textPanel = CreatePanel2_1(15, 85);
+
+			label.Font = new Font("Intro", 22, FontStyle.Bold);
+			text.Font = new Font("Actor", 10, FontStyle.Bold);
+
+			textPanel.Controls.Add(label, 0, 0);
+			textPanel.Controls.Add(text, 0, 1);
+
+			panel.Controls.Add(textPanel, 1, 1);
 			panel.Controls.Add(GetPlaceholder(), 1, 2);
-			panel.Controls.Add(label, 2, 0);
-			panel.Controls.Add(text, 2, 1);
+			panel.Controls.Add(GetFourButtons(first, second, third, fourth), 2, 1);
 			panel.Controls.Add(GetPlaceholder(), 2, 2);
-			panel.Controls.Add(GetPlaceholder(), 3, 0);
-			panel.Controls.Add(GetFourButtons(first, second, third, fourth), 3, 1);
-			panel.Controls.Add(GetPlaceholder(), 3, 2);
-			return panel;
-		}
-
-		private static TableLayoutPanel GetTwoButtonsRow(Button nextButton, Button prevButton)
-        {
-			var panel = CreatePanel1_3();
-			panel.Controls.Add(prevButton, 0, 0);
-			panel.Controls.Add(GetPlaceholder(), 1,0);
-			panel.Controls.Add(nextButton, 2, 0);
-			return panel;
-		}
-
-		private static TableLayoutPanel GetTextAndThreeButtons(Label text, Button first, Button second, Button third)
-        {
-			var panel = CreatePanel1_2(40,60);
-			panel.Controls.Add(GetThreeButtonsWithSpaces(first,second,third), 0, 0);
-			panel.Controls.Add(text, 1, 0);
 			return panel;
 		}
 
 		private static TableLayoutPanel GetThreeButtonsWithSpaces(Button first, Button second, Button third)
         {
-			var panel = CreatePanel2_2();
-			panel.Controls.Add(GetPlaceholder(), 0, 0);
-			panel.Controls.Add(GetPlaceholder(), 0, 1);
-			panel.Controls.Add(GetThreeButtons(first, second, third), 1, 0);
-			panel.Controls.Add(GetPlaceholder(), 1, 1);
-			return panel;
-		}
-
-		private static TableLayoutPanel GetThreeButtons(Button first, Button second, Button third)
-        {
-			var panel = CreatePanel3_1();
+			var panel = CreatePanel4_1();
 			panel.Controls.Add(first, 0, 0);
 			panel.Controls.Add(second, 0, 1);
 			panel.Controls.Add(third, 0, 2);
+			panel.Controls.Add(GetPlaceholder(), 0, 3);
 			return panel;
 		}
 
@@ -539,11 +487,6 @@ namespace FactorioGuideProject
         {
 			var labels = ResourcesGroup.GetResourcesGroupLables();
 			var panel = CreatePanel5_6();
-			panel.Controls.Add(GetPlaceholder(), 0, 0);
-			panel.Controls.Add(GetPlaceholder(), 0, 1);
-			panel.Controls.Add(GetPlaceholder(), 0, 2);
-			panel.Controls.Add(GetPlaceholder(), 0, 3);
-			panel.Controls.Add(GetPlaceholder(), 0, 4);
 			panel.Controls.Add(stone, 1, 0);
 			panel.Controls.Add(wood, 1, 1);
 			panel.Controls.Add(coal, 1, 2);
@@ -563,12 +506,6 @@ namespace FactorioGuideProject
             panel.Controls.Add(labels[6], 4, 1);
             panel.Controls.Add(labels[7], 4, 2);
             panel.Controls.Add(labels[8], 4, 3);
-			panel.Controls.Add(GetPlaceholder(), 4, 4);
-			panel.Controls.Add(GetPlaceholder(), 5, 0);
-			panel.Controls.Add(GetPlaceholder(), 5, 1);
-			panel.Controls.Add(GetPlaceholder(), 5, 2);
-			panel.Controls.Add(GetPlaceholder(), 5, 3);
-			panel.Controls.Add(GetPlaceholder(), 5, 4);
 			return panel;
 		}
 
@@ -576,9 +513,6 @@ namespace FactorioGuideProject
         {
 			var panel = CreatePanel3_6();
 			var labels = TransportGroup.GetTransportGroupLabels();
-			panel.Controls.Add(GetPlaceholder(), 0, 0);
-			panel.Controls.Add(GetPlaceholder(), 0, 1);
-			panel.Controls.Add(GetPlaceholder(), 0, 2);
 			panel.Controls.Add(belt, 1, 0);
 			panel.Controls.Add(manipulator, 1, 1);
 			panel.Controls.Add(pipe, 1, 2);
@@ -590,10 +524,6 @@ namespace FactorioGuideProject
 			panel.Controls.Add(GetPlaceholder(), 3, 2);
 			panel.Controls.Add(labels[3], 4, 0);
 			panel.Controls.Add(labels[4], 4, 1);
-			panel.Controls.Add(GetPlaceholder(), 4, 2);
-			panel.Controls.Add(GetPlaceholder(), 5, 0);
-			panel.Controls.Add(GetPlaceholder(), 5, 1);
-			panel.Controls.Add(GetPlaceholder(), 5, 2);
 			return panel;
 		}
 

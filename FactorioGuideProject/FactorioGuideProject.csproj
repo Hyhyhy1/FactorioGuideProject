@@ -46,7 +46,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Backgrounds.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Backgrounds.resx</DependentUpon>
+    </Compile>
     <Compile Include="DefenceGroup.cs" />
+    <Compile Include="FormColors.cs" />
     <Compile Include="ResourcesGroup.cs" />
     <Compile Include="DoubleSideLinkedList.cs" />
     <Compile Include="FormTableConstructor.cs" />
@@ -62,6 +68,10 @@
       <DependentUpon>Resource1.resx</DependentUpon>
     </Compile>
     <Compile Include="TransportGroup.cs" />
+    <EmbeddedResource Include="Backgrounds.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Backgrounds.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -153,6 +163,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Pictures\Train.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Pictures\MainSlideBackground.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Backgrounds\DefenceSlideBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Backgrounds\EnemySlideBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Backgrounds\MainSlideBackground.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Backgrounds\ResourcesSlideBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Backgrounds\SettingsBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Backgrounds\LandscapeSlideBacground.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -3,16 +3,12 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using static FactorioGuideProject.Scheme;
 using static FactorioGuideProject.GuideForm;
+using System.Drawing;
 
 namespace FactorioGuideProject
 {
-
 	public class MapCreationGroup
 	{
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		public static Label[] GetMapCreationGroup()
 		{
 			var MapCreationGroupText = new List<Label>();
@@ -21,6 +17,7 @@ namespace FactorioGuideProject
 				Text = "Генератор карты - это совокупность настроек, с помощью которых определяется, как будет выглядеть ваш мир после создания. " +
 				"Для новичков рекомендуется оставлять дефолтные настройки, мы тоже оставили, за исключением некоторых пунктов, о которых расскажем ниже.",
 				Dock = DockStyle.Fill,
+				ForeColor = Color.White
 			});
 
 			MapCreationGroupText.Add(new Label()
@@ -30,6 +27,7 @@ namespace FactorioGuideProject
 				Environment.NewLine + "Частота отвечает за то, как часто вы будете находить месторождения руды определенного типа." +
 				Environment.NewLine + "Размер отвечает за площадь скоплений руды, а богатство - за количество руды в клетке залежи.",
 				Dock = DockStyle.Fill,
+				ForeColor = Color.White
 			});
 
 			MapCreationGroupText.Add(new Label()
@@ -39,6 +37,7 @@ namespace FactorioGuideProject
 				Environment.NewLine + "Они мешают постройке больших систем, и передвижению, а также их невозможно убрать на ранних этапах игры." +
 				Environment.NewLine + "Для их разрушения нужна взрывчатка для скал, а после взрыва с них не выпадает никаких ресурсов",
 				Dock = DockStyle.Fill,
+				ForeColor = Color.White
 			});
 
 			MapCreationGroupText.Add(new Label()
@@ -56,6 +55,7 @@ namespace FactorioGuideProject
 				Environment.NewLine + "Эволюция - это развитие врагов, на которое могут влиять три фактора: время, уничтожение ульев, загрязнение." +
 				"Мы оставили минимальную скорость эволюции.",
 				Dock = DockStyle.Fill,
+				ForeColor = Color.White
 			});
 
 			return MapCreationGroupText.ToArray();
@@ -64,10 +64,10 @@ namespace FactorioGuideProject
 		public static Label[] GetMapCreationLabels()
         {
 			var labels = new List<Label>();
-			labels.Add(new Label { Text = "Настройки мира игры" });
-			labels.Add(new Label { Text = "Ресурсы" });
-			labels.Add(new Label { Text = "Ландшафт" });
-			labels.Add(new Label { Text = "Противники" });
+			labels.Add(new Label { Text = "Настройки мира игры", Dock = DockStyle.Fill, ForeColor = Color.White });
+			labels.Add(new Label { Text = "Ресурсы", Dock = DockStyle.Fill, ForeColor = Color.White });
+			labels.Add(new Label { Text = "Ландшафт", Dock = DockStyle.Fill, ForeColor = Color.White });
+			labels.Add(new Label { Text = "Противники", Dock = DockStyle.Fill, ForeColor = Color.White });
 			return labels.ToArray();
 		}
 	}

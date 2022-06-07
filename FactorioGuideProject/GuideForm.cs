@@ -14,13 +14,18 @@ namespace FactorioGuideProject
 		TableLayoutPanel Panel;
 		public GuideForm()
         {
+
 			DoubleBuffered = true;
 			var initialSlideLabel = new Label
 			{
-				Text = "Введение"
+				Text = "Введение",
+				Font = new Font("Actor", 12),
+				ForeColor = Color.White,
+				AutoSize = true,
+				Anchor = AnchorStyles.Top,
 			};
 
-			var initialSlideText = new Label()
+			var initialSlideText = new Label
 			{
 				Text = "Добро пожаловать в наше приложение!" +
 				Environment.NewLine + "Данный интерактивный гайд поможет Вам разобраться в Factorio." +
@@ -32,17 +37,21 @@ namespace FactorioGuideProject
 				Environment.NewLine + "Полезные советы при тупиковых ситуациях." +
 				Environment.NewLine + "С нами у Вас не возникнет проблем с прохождением Factorio. " +
 				Environment.NewLine + "Приятной игры!",
+				Font = new Font("Actor",12),
 				Dock = DockStyle.Fill,
-				
+				ForeColor = Color.White,
+				AutoSize = true,
+				Anchor = AnchorStyles.Top,
 			};
 
-			Panel = GetSiplePage(initialSlideLabel, initialSlideText);
+			Panel = GetSimplePage(initialSlideLabel, initialSlideText);
 
 			var Chapters = new ComboBox()
 			{
 				Location = new Point(0, 0),
 				Size = new Size(210, 40),
 				Text = "Этапы прохождения",
+				DropDownStyle = ComboBoxStyle.DropDownList
 			};
 
 			Chapters.Items.Add("Создание карты");
@@ -58,22 +67,24 @@ namespace FactorioGuideProject
 			Chapters.SelectedIndexChanged += (sender, args) =>
 			{
 				Controls.Remove(Panel);
-				Panel = Scheme.CreateSimplePanel();
 
 				switch (Chapters.SelectedIndex)
 				{
 					case 0://Создание карты
-                        var MapCreationGroupText = GetMapCreationGroup();
+						CurrentGroup.Clear();
+						var MapCreationGroupText = GetMapCreationGroup();
 						var MapCreationLabels = GetMapCreationLabels();
 
 						CurrentGroup.Add(GetDificultSlide
-                            (MapCreationLabels[0], MapCreationGroupText[0], GetNextButton(), GetPrevButton(), GetNextButton(1,"Ресурсы"), GetNextButton(2,"Ландшафт"), GetNextButton(3,"Противники")));
-                        CurrentGroup.Add(GetPageWithTextAndPicture(MapCreationLabels[1], MapCreationGroupText[1],GetNextButton(),GetPrevButton(), Resource1.Settings1));
-                        CurrentGroup.Add(GetPageWithTextAndPicture(MapCreationLabels[2], MapCreationGroupText[2], GetNextButton(), GetPrevButton(), Resource1.Settings2));
-                        CurrentGroup.Add(GetPageWithTextAndPicture(MapCreationLabels[3], MapCreationGroupText[3], GetPrevButton(), GetPrevButton(), Resource1.Settings3));
+                            (MapCreationLabels[0], MapCreationGroupText[0], GetNextButton(1,"Ресурсы"), GetNextButton(2,"Ландшафт"), GetNextButton(3,"Противники"), GetNextButton()));
+						CurrentGroup.Add(GetSettingsSlide(MapCreationLabels[1], MapCreationGroupText[1], Backgrounds.ResourcesSlideBackground, GetPrevButton(), GetNextButton(), false));
+                        CurrentGroup.Add(GetSettingsSlide(MapCreationLabels[2], MapCreationGroupText[2],Backgrounds.LandscapeSlideBackground, GetPrevButton(), GetNextButton(), false));
+                        CurrentGroup.Add(GetSettingsSlide(MapCreationLabels[3], MapCreationGroupText[3],Backgrounds.EnemySlideBackground, GetPrevButton(), GetNextButton(), true));
+
 
 						currentPanel = CurrentGroup.First();
 						Panel = currentPanel.Value;
+
 						Controls.Add(Panel);
 						break;
 
@@ -171,7 +182,8 @@ namespace FactorioGuideProject
 		private Button GetNextButton()
         {
 			var nextButton = new Button { Text = "Далее", Dock = DockStyle.Fill, FlatStyle = FlatStyle.Flat, };
-			nextButton.BackColor = Color.Transparent;
+			nextButton.BackColor = FormColors.AccentColor;
+			nextButton.ForeColor = Color.White;
 			nextButton.Click += nextButtonClick;
 			return nextButton;
 		}
@@ -185,8 +197,8 @@ namespace FactorioGuideProject
 		private Button GetNextButton(int stepsCount, string text)
         {
 			var nextButton = new Button { Text = text, Dock = DockStyle.Fill, FlatStyle = FlatStyle.Flat, };
-			nextButton.BackColor = Color.Transparent;
-			//nextButton.ForeColor = Color.Transparent;
+			nextButton.BackColor = FormColors.AccentColor;
+			nextButton.ForeColor = Color.White;
 			nextButton.Font = new Font(nextButton.Font, FontStyle.Bold);
 			nextButton.UseCompatibleTextRendering = true;
 			for (int i = 0; i < stepsCount; i++)
@@ -197,16 +209,17 @@ namespace FactorioGuideProject
 		private Button GetPrevButton()
         {
 			var prevButton = new Button { Text = "Назад", Dock = DockStyle.Fill, FlatStyle = FlatStyle.Flat, };
-			prevButton.BackColor = Color.Transparent;
+			prevButton.BackColor = FormColors.AccentColor;
+			prevButton.ForeColor = Color.White;
 			prevButton.Click += prevButtonClick;
 			return prevButton;
 		}
 
 		private Button GetPrevButton(int stepsCount, string text)
 		{
-			var prevButton = new Button { Text = text, Dock = DockStyle.Fill, FlatStyle = FlatStyle.Flat, };
-			prevButton.BackColor = Color.Transparent;
-			//prevButton.ForeColor = Color.Transparent;
+			var prevButton = new Button { Text = text, Dock = DockStyle.Fill, FlatStyle = FlatStyle.Flat, Margin = new Padding(0) };
+			prevButton.BackColor = FormColors.AccentColor;
+			prevButton.ForeColor = Color.White;
 			prevButton.Font = new Font(prevButton.Font, FontStyle.Bold);
 			prevButton.UseCompatibleTextRendering = true;
 			for (int i = 0; i < stepsCount; i++)
