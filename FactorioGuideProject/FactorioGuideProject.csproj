@@ -51,12 +51,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Backgrounds.resx</DependentUpon>
     </Compile>
-    <Compile Include="DefenceGroup.cs" />
     <Compile Include="FormColors.cs" />
-    <Compile Include="ResourcesGroup.cs" />
     <Compile Include="DoubleSideLinkedList.cs" />
     <Compile Include="FormTableConstructor.cs" />
-    <Compile Include="MapCreationGroup.cs" />
+    <Compile Include="GroupsData.cs" />
     <Compile Include="GuideForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,7 +65,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource1.resx</DependentUpon>
     </Compile>
-    <Compile Include="TransportGroup.cs" />
     <EmbeddedResource Include="Backgrounds.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Backgrounds.Designer.cs</LastGenOutput>
@@ -184,6 +181,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Backgrounds\LandscapeSlideBacground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Pictures\electricity.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Pictures\firstSteps.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Pictures\science.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

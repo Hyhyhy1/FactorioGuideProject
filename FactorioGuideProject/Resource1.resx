@@ -133,6 +133,12 @@
   <data name="Drones" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Pictures\Drones.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="electricity" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Pictures\electricity.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="firstSteps" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Pictures\firstSteps.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="fish" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Pictures\fish.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -154,14 +160,8 @@
   <data name="Pipes" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Pictures\Pipes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Settings1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Pictures\Settings1.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Settings2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Pictures\Settings2.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Settings3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Pictures\Settings3.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="science" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Pictures\science.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="stone" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Pictures\stone.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

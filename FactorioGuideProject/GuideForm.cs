@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Drawing;
-using static FactorioGuideProject.MapCreationGroup;
+using static FactorioGuideProject.GroupsData;
 using static FactorioGuideProject.Scheme;
 
 using System.Windows.Forms;
@@ -56,9 +56,10 @@ namespace FactorioGuideProject
 
 			Chapters.Items.Add("Создание карты");
 			Chapters.Items.Add("Первые шаги");
+			Chapters.Items.Add("Электричество");
+			Chapters.Items.Add("Начальная наука");
 			Chapters.Items.Add("Ресурсы");
 			Chapters.Items.Add("Транспортировка предметов");
-			Chapters.Items.Add("Начальная наука");
 			Chapters.Items.Add("Важность обороны");
 			Chapters.Items.Add("Синяя наука");
 			Chapters.Items.Add("Фиолетовая и желтая наука");
@@ -72,8 +73,8 @@ namespace FactorioGuideProject
 				{
 					case 0://Создание карты
 						CurrentGroup.Clear();
-						var MapCreationGroupText = GetMapCreationGroup();
-						var MapCreationLabels = GetMapCreationLabels();
+						var MapCreationGroupText = GetMapCreationGroupText();
+						var MapCreationLabels = GetMapCreationGroupLabels();
 
 						CurrentGroup.Add(GetDificultSlide
                             (MapCreationLabels[0], MapCreationGroupText[0], GetNextButton(1,"Ресурсы"), GetNextButton(2,"Ландшафт"), GetNextButton(3,"Противники"), GetNextButton()));
@@ -88,49 +89,83 @@ namespace FactorioGuideProject
 						Controls.Add(Panel);
 						break;
 
-                    //case 1://Первые шаги
-                    //	Scheme.GetPageWithNextButton(panel, firstStepsLabel, firstStepsText0, nextSlide);
-                    //	Controls.Add(panel);
-                    //	break;
-
-                    case 2://Ресурсы
+                    case 1://Первые шаги
 						CurrentGroup.Clear();
-						var resourcesGroupTexts = ResourcesGroup.GetResourcesGroupTexts();
-						var resourcesGroupLabels = ResourcesGroup.GetResourcesGroupLables();
+						var firstStepsGroupText = GetFirstStepsText();
+						var firstStepsGroupLabel = GetFirstStepsLabel();
+
+						CurrentGroup.Add(GetSimplePageWithPicture(Resource1.firstSteps, firstStepsGroupLabel, firstStepsGroupText));
+
+						currentPanel = CurrentGroup.First();
+						Panel = currentPanel.Value;
+
+						Controls.Add(Panel);
+						break;
+
+					case 2://Электричество
+						CurrentGroup.Clear();
+						var electicityText = GetElectricityText();
+						var electicityLabel = GetElectricityLabel();
+
+						CurrentGroup.Add(GetSimplePageWithPicture(Resource1.electricity, electicityLabel, electicityText));
+
+						currentPanel = CurrentGroup.First();
+						Panel = currentPanel.Value;
+
+						Controls.Add(Panel);
+						break;
+
+					case 3: //Начальная наука
+						CurrentGroup.Clear();
+						var initialScienceText = GetInitialScienceText();
+						var initialScienceLabel = GetInitialScienceLabel();
+
+						CurrentGroup.Add(GetSimplePageWithPicture(Resource1.science, initialScienceLabel, initialScienceText));
+
+						currentPanel = CurrentGroup.First();
+						Panel = currentPanel.Value;
+
+						Controls.Add(Panel);
+						break;
+
+					case 4://Ресурсы
+						CurrentGroup.Clear();
+						var resourcesGroupTexts = GetResourcesGroupTexts();
+						var resourcesGroupLabels = GetResourcesGroupLables();
 
 						CurrentGroup.Add(GetResourcesMainSlide(
 							GetPictureBoxButton(Resource1.stone,1),GetPictureBoxButton(Resource1.wood,2),
 							GetPictureBoxButton(Resource1.coal,3),GetPictureBoxButton(Resource1.coper,4),
 							GetPictureBoxButton(Resource1.iron,5),GetPictureBoxButton(Resource1.water,6),
 							GetPictureBoxButton(Resource1.oil,7),GetPictureBoxButton(Resource1.uranium,8),GetPictureBoxButton(Resource1.fish,9)));
-                        CurrentGroup.Add(GetResource(Resource1.stone, resourcesGroupLabels[0], resourcesGroupTexts[0],GetPrevButton(1,"Назад")));
-                        CurrentGroup.Add(GetResource(Resource1.wood, resourcesGroupLabels[1], resourcesGroupTexts[1], GetPrevButton(2, "Назад")));
-						CurrentGroup.Add(GetResource(Resource1.coal, resourcesGroupLabels[2], resourcesGroupTexts[2], GetPrevButton(3, "Назад")));
-						CurrentGroup.Add(GetResource(Resource1.coper, resourcesGroupLabels[3], resourcesGroupTexts[3], GetPrevButton(4, "Назад")));
-						CurrentGroup.Add(GetResource(Resource1.iron, resourcesGroupLabels[4], resourcesGroupTexts[4], GetPrevButton(5, "Назад")));
-						CurrentGroup.Add(GetResource(Resource1.water, resourcesGroupLabels[5], resourcesGroupTexts[5], GetPrevButton(6, "Назад")));
-						CurrentGroup.Add(GetResource(Resource1.oil, resourcesGroupLabels[6], resourcesGroupTexts[6], GetPrevButton(7, "Назад")));
-						CurrentGroup.Add(GetResource(Resource1.uranium, resourcesGroupLabels[7], resourcesGroupTexts[7], GetPrevButton(8, "Назад")));
-						CurrentGroup.Add(GetResource(Resource1.fish, resourcesGroupLabels[8], resourcesGroupTexts[8], GetPrevButton(9, "Назад")));
+                        CurrentGroup.Add(GetResource(Resource1.stone, resourcesGroupLabels[0], resourcesGroupTexts[0],GetPrevButton(1,"Назад"), true));
+                        CurrentGroup.Add(GetResource(Resource1.wood, resourcesGroupLabels[1], resourcesGroupTexts[1], GetPrevButton(2, "Назад"), true));
+						CurrentGroup.Add(GetResource(Resource1.coal, resourcesGroupLabels[2], resourcesGroupTexts[2], GetPrevButton(3, "Назад"), true));
+						CurrentGroup.Add(GetResource(Resource1.coper, resourcesGroupLabels[3], resourcesGroupTexts[3], GetPrevButton(4, "Назад"), true));
+						CurrentGroup.Add(GetResource(Resource1.iron, resourcesGroupLabels[4], resourcesGroupTexts[4], GetPrevButton(5, "Назад"), true));
+						CurrentGroup.Add(GetResource(Resource1.water, resourcesGroupLabels[5], resourcesGroupTexts[5], GetPrevButton(6, "Назад"), true));
+						CurrentGroup.Add(GetResource(Resource1.oil, resourcesGroupLabels[6], resourcesGroupTexts[6], GetPrevButton(7, "Назад"), true));
+						CurrentGroup.Add(GetResource(Resource1.uranium, resourcesGroupLabels[7], resourcesGroupTexts[7], GetPrevButton(8, "Назад"), true));
+						CurrentGroup.Add(GetResource(Resource1.fish, resourcesGroupLabels[8], resourcesGroupTexts[8], GetPrevButton(9, "Назад"), true));
 
 						currentPanel = CurrentGroup.First();
 						Panel = currentPanel.Value;
 						Controls.Add(Panel);
                         break;
 
-					case 3://Транспортировка
+					case 5://Транспортировка
 						CurrentGroup.Clear();
-						var transportGroupTexts = TransportGroup.GetTransportGroupTexts();
-						var transportGroupLabels = TransportGroup.GetTransportGroupLabels();
+						var transportGroupTexts = GetTransportGroupTexts();
+						var transportGroupLabels = GetTransportGroupLabels();
 
 						CurrentGroup.Add(GetTransportMainSlide(
 							GetPictureBoxButton(Resource1.Belts, 1), GetPictureBoxButton(Resource1.Manipulator, 2),
 							GetPictureBoxButton(Resource1.Pipes, 3), GetPictureBoxButton(Resource1.Train, 4), GetPictureBoxButton(Resource1.Drones, 5)));
-						CurrentGroup.Add(GetResource(Resource1.Belts, transportGroupLabels[0], transportGroupTexts[0], GetPrevButton(1, "Назад")));
-						CurrentGroup.Add(GetResource(Resource1.Manipulator, transportGroupLabels[1], transportGroupTexts[1], GetPrevButton(2, "Назад")));
-						CurrentGroup.Add(GetResource(Resource1.Pipes, transportGroupLabels[2], transportGroupTexts[2], GetPrevButton(3, "Назад")));
-						CurrentGroup.Add(GetResource(Resource1.Train, transportGroupLabels[3], transportGroupTexts[3], GetPrevButton(4, "Назад")));
-						CurrentGroup.Add(GetResource(Resource1.Drones, transportGroupLabels[4], transportGroupTexts[4], GetPrevButton(5, "Назад")));
+						CurrentGroup.Add(GetResource(Resource1.Belts, transportGroupLabels[0], transportGroupTexts[0], GetPrevButton(1, "Назад"), true));
+						CurrentGroup.Add(GetResource(Resource1.Manipulator, transportGroupLabels[1], transportGroupTexts[1], GetPrevButton(2, "Назад"), true));
+						CurrentGroup.Add(GetResource(Resource1.Pipes, transportGroupLabels[2], transportGroupTexts[2], GetPrevButton(3, "Назад"), true));
+						CurrentGroup.Add(GetResource(Resource1.Train, transportGroupLabels[3], transportGroupTexts[3], GetPrevButton(4, "Назад"), true));
+						CurrentGroup.Add(GetResource(Resource1.Drones, transportGroupLabels[4], transportGroupTexts[4], GetPrevButton(5, "Назад"), true));
 
 						currentPanel = CurrentGroup.First();
 						Panel = currentPanel.Value;
@@ -138,17 +173,17 @@ namespace FactorioGuideProject
 						break;
 
 
-					case 5: //Важность обороны
+					case 6: //Важность обороны
 						CurrentGroup.Clear();
-						var defenceGroupTexts = DefenceGroup.GetDefenceGroupTexts();
-						var defenceGroupLabels = DefenceGroup.GetDefenceGroupLabels();
+						var defenceGroupTexts = GetDefenceGroupTexts();
+						var defenceGroupLabels = GetDefenceGroupLabels();
 
 						CurrentGroup.Add(GetDefenceGroupMainSlide(Resource1.Жуки, defenceGroupLabels[0], defenceGroupTexts[0],
 							GetNextButton(1, "Оружие"), GetNextButton(2, "Турели"), GetNextButton(3, "Гранаты"), GetNextButton(4, "Броня")));
-                        CurrentGroup.Add(GetResource(Resource1.guns, defenceGroupLabels[1], defenceGroupTexts[1], GetPrevButton(1, "Назад")));
-						CurrentGroup.Add(GetResource(Resource1.turret, defenceGroupLabels[2], defenceGroupTexts[2], GetPrevButton(2, "Назад")));
-						CurrentGroup.Add(GetResource(Resource1.grenade, defenceGroupLabels[3], defenceGroupTexts[3], GetPrevButton(3, "Назад")));
-						CurrentGroup.Add(GetResource(Resource1.Armor, defenceGroupLabels[4], defenceGroupTexts[4], GetPrevButton(4, "Назад")));
+                        CurrentGroup.Add(GetResource(Resource1.guns, defenceGroupLabels[1], defenceGroupTexts[1], GetPrevButton(1, "Назад"), false));
+						CurrentGroup.Add(GetResource(Resource1.turret, defenceGroupLabels[2], defenceGroupTexts[2], GetPrevButton(2, "Назад"), true));
+						CurrentGroup.Add(GetResource(Resource1.grenade, defenceGroupLabels[3], defenceGroupTexts[3], GetPrevButton(3, "Назад"), false));
+						CurrentGroup.Add(GetResource(Resource1.Armor, defenceGroupLabels[4], defenceGroupTexts[4], GetPrevButton(4, "Назад"), true));
 
 						currentPanel = CurrentGroup.First();
 						Panel = currentPanel.Value;

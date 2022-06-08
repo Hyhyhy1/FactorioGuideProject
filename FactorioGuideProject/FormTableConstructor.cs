@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using static FactorioGuideProject.GroupsData;
 
 namespace FactorioGuideProject
 {
@@ -29,6 +30,7 @@ namespace FactorioGuideProject
 			return panel;
 
 		}
+
 		private static TableLayoutPanel CreateSettingsPanel()
         {
 			var panel = new TableLayoutPanel();
@@ -223,72 +225,6 @@ namespace FactorioGuideProject
 		}
 
 		/// <summary>
-		/// таблица с 2мя строками и 2мя столбцами
-		/// </summary>
-		/// <returns></returns>
-		private static TableLayoutPanel CreatePanel2_2()
-        {
-			TableLayoutPanel panel = new TableLayoutPanel();
-			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 75));
-			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 25));
-			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 60));
-			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40));
-			panel.Dock = DockStyle.Fill;
-			return panel;
-		}
-
-		/// <summary>
-		/// таблица с 4мя строками и 2мя колонками
-		/// </summary>
-		/// <returns></returns>
-		private static TableLayoutPanel CreatePanel4_2()
-		{
-			TableLayoutPanel panel = new TableLayoutPanel();
-			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 25));
-			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 25));
-			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 25));
-			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 25));
-			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20));
-			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 80));
-			panel.Dock = DockStyle.Fill;
-			return panel;
-		}
-
-		/// <summary>
-		/// Этот метод создает таблицу с картинкой и текстом
-		/// </summary>
-		/// <returns></returns>
-		private static TableLayoutPanel CreateTextAndPicturePanel(Bitmap bitmap, Label text)
-        {
-			var panel = CreatePanel1_2(40,60);
-            var picture = new PictureBox{Image = bitmap};
-			picture.Dock = DockStyle.Fill;
-			picture.SizeMode = PictureBoxSizeMode.Zoom;
-            panel.Controls.Add(picture, 0, 0);
-			panel.Controls.Add(text, 1, 0);
-			return panel;
-		}
-
-		/// <summary>
-		/// Этот метод создает слайд с картинкой и тестом
-		/// </summary>
-		/// <param name="label">заголовк слайда</param>
-		/// <param name="text">текст слайда</param>
-		/// <param name="nextButton"></param>
-		/// <param name="prevButton"></param>
-		/// <param name="picture"></param>
-		/// <returns></returns>
-		public static TableLayoutPanel GetPageWithTextAndPicture(Label label, Label text, Button nextButton, Button prevButton, Bitmap picture)
-        {
-			var panel = CreateSimplePanel();
-			panel.Controls.Add(prevButton, 0, 3);
-			panel.Controls.Add(label, 1, 1);
-			panel.Controls.Add(CreateTextAndPicturePanel(picture,text), 1, 2);
-			panel.Controls.Add(nextButton, 2, 3);
-			return panel;
-		}
-
-		/// <summary>
 		/// этот метод создает простой слайд без кнопок
 		/// </summary>
 		/// <param name="label">заголовок слайда</param>
@@ -381,7 +317,20 @@ namespace FactorioGuideProject
 			return panel;
 		}
 
-		public static TableLayoutPanel GetResourcesMainSlide(PictureBox stone, PictureBox wood, PictureBox coal, PictureBox coper,
+		/// <summary>
+		/// Конструктор первого слайда раздела "ресурсы"
+		/// </summary>
+		/// <param name="stone"></param>
+		/// <param name="wood"></param>
+		/// <param name="coal"></param>
+		/// <param name="coper"></param>
+		/// <param name="iron"></param>
+		/// <param name="water"></param>
+		/// <param name="oil"></param>
+		/// <param name="uranium"></param>
+		/// <param name="fish"></param>
+		/// <returns></returns>
+		public static TableLayoutPanel GetResourcesMainSlide(PictureBox stone, PictureBox wood, PictureBox coal, PictureBox coper, 
 			PictureBox iron, PictureBox water, PictureBox oil, PictureBox uranium, PictureBox fish)
         {
 			var panel = CreateResourcesMainPanel();
@@ -412,7 +361,7 @@ namespace FactorioGuideProject
 			return panel;
 		}
 
-		public static TableLayoutPanel GetResource(Bitmap picture,Label label, Label text, Button prevButton)
+		public static TableLayoutPanel GetResource(Bitmap picture,Label label, Label text, Button prevButton, bool isSquareImage)
         {
 			var panel = CreateResourcePanel();
 			panel.BackColor = FormColors.MainColor;
@@ -421,7 +370,8 @@ namespace FactorioGuideProject
 			text.Font = new Font("Actor", 10, FontStyle.Bold);
 
 			panel.SuspendLayout();
-			panel.Controls.Add(new Panel() { Dock = DockStyle.Fill, BackColor = FormColors.AccentColor, Margin = new Padding(0) }, 0, 0);
+			if(isSquareImage)
+				panel.Controls.Add(new Panel() { Dock = DockStyle.Fill, BackColor = FormColors.AccentColor, Margin = new Padding(0) }, 0, 0);
 			panel.Controls.Add(new PictureBox() { Image = picture, Dock = DockStyle.Fill, Margin = new Padding(0), SizeMode = PictureBoxSizeMode.StretchImage }, 0, 1);
 			panel.Controls.Add(prevButton,0,2);
 			panel.Controls.Add(GetLabelAndText(label, text), 1, 1);
@@ -450,6 +400,23 @@ namespace FactorioGuideProject
 			panel.Controls.Add(GetPlaceholder(), 1, 2);
 			panel.Controls.Add(GetFourButtons(first, second, third, fourth), 2, 1);
 			panel.Controls.Add(GetPlaceholder(), 2, 2);
+			return panel;
+		}
+
+		public static TableLayoutPanel GetSimplePageWithPicture(Bitmap picture, Label label, Label text)
+        {
+			var panel = CreateResourcePanel();
+			panel.BackColor = FormColors.MainColor;
+			
+			label.Font = new Font("Intro", 22, FontStyle.Bold);
+			text.Font = new Font("Actor", 10, FontStyle.Bold);
+			
+			panel.SuspendLayout();
+			panel.Controls.Add(new PictureBox() { Image = picture, Dock = DockStyle.Fill, Margin = new Padding(0), SizeMode = PictureBoxSizeMode.StretchImage }, 0, 0);
+			panel.Controls.Add(new Panel() { Dock = DockStyle.Fill, BackColor = FormColors.AccentColor, Margin = new Padding(0) }, 0, 2);
+			panel.Controls.Add(GetLabelAndText(label, text), 1, 1);
+			panel.SetRowSpan(panel.GetControlFromPosition(0,0), 2);
+			panel.ResumeLayout();
 			return panel;
 		}
 
@@ -485,7 +452,7 @@ namespace FactorioGuideProject
 		private static TableLayoutPanel GetResources(PictureBox stone, PictureBox wood, PictureBox coal, PictureBox coper, 
 			PictureBox iron, PictureBox water, PictureBox oil, PictureBox uranium, PictureBox fish)
         {
-			var labels = ResourcesGroup.GetResourcesGroupLables();
+			var labels = GroupsData.GetResourcesGroupLables();
 			var panel = CreatePanel5_6();
 			panel.Controls.Add(stone, 1, 0);
 			panel.Controls.Add(wood, 1, 1);
@@ -512,7 +479,7 @@ namespace FactorioGuideProject
 		private static TableLayoutPanel GetTransport(PictureBox belt, PictureBox manipulator, PictureBox pipe, PictureBox train, PictureBox drone)
         {
 			var panel = CreatePanel3_6();
-			var labels = TransportGroup.GetTransportGroupLabels();
+			var labels = GetTransportGroupLabels();
 			panel.Controls.Add(belt, 1, 0);
 			panel.Controls.Add(manipulator, 1, 1);
 			panel.Controls.Add(pipe, 1, 2);

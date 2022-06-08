@@ -113,6 +113,26 @@ namespace FactorioGuideProject {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap electricity {
+            get {
+                object obj = ResourceManager.GetObject("electricity", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap firstSteps {
+            get {
+                object obj = ResourceManager.GetObject("firstSteps", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap fish {
             get {
                 object obj = ResourceManager.GetObject("fish", resourceCulture);
@@ -183,29 +203,9 @@ namespace FactorioGuideProject {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Settings1 {
+        internal static System.Drawing.Bitmap science {
             get {
-                object obj = ResourceManager.GetObject("Settings1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Settings2 {
-            get {
-                object obj = ResourceManager.GetObject("Settings2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Settings3 {
-            get {
-                object obj = ResourceManager.GetObject("Settings3", resourceCulture);
+                object obj = ResourceManager.GetObject("science", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
