@@ -61,6 +61,7 @@ namespace FactorioGuideProject
 			Chapters.Items.Add("Ресурсы");
 			Chapters.Items.Add("Транспортировка предметов");
 			Chapters.Items.Add("Важность обороны");
+			Chapters.Items.Add("Советы");
 			Chapters.Items.Add("Синяя наука");
 			Chapters.Items.Add("Фиолетовая и желтая наука");
 			Chapters.Items.Add("Финал!");
@@ -76,7 +77,7 @@ namespace FactorioGuideProject
 						var MapCreationGroupText = GetMapCreationGroupText();
 						var MapCreationLabels = GetMapCreationGroupLabels();
 
-						CurrentGroup.Add(GetDificultSlide
+						CurrentGroup.Add(GetSettingsFirstSlide
                             (MapCreationLabels[0], MapCreationGroupText[0], GetNextButton(1,"Ресурсы"), GetNextButton(2,"Ландшафт"), GetNextButton(3,"Противники"), GetNextButton()));
 						CurrentGroup.Add(GetSettingsSlide(MapCreationLabels[1], MapCreationGroupText[1], Backgrounds.ResourcesSlideBackground, GetPrevButton(), GetNextButton(), false));
                         CurrentGroup.Add(GetSettingsSlide(MapCreationLabels[2], MapCreationGroupText[2],Backgrounds.LandscapeSlideBackground, GetPrevButton(), GetNextButton(), false));
@@ -184,6 +185,18 @@ namespace FactorioGuideProject
 						CurrentGroup.Add(GetResource(Resource1.turret, defenceGroupLabels[2], defenceGroupTexts[2], GetPrevButton(2, "Назад"), true));
 						CurrentGroup.Add(GetResource(Resource1.grenade, defenceGroupLabels[3], defenceGroupTexts[3], GetPrevButton(3, "Назад"), false));
 						CurrentGroup.Add(GetResource(Resource1.Armor, defenceGroupLabels[4], defenceGroupTexts[4], GetPrevButton(4, "Назад"), true));
+
+						currentPanel = CurrentGroup.First();
+						Panel = currentPanel.Value;
+						Controls.Add(Panel);
+						break;
+
+					case 7: //Cоветы
+						CurrentGroup.Clear();
+						var tipsTexts = GetTipsTexts();
+						var tipsLabel = GetTipsLabel();
+
+						CurrentGroup.Add(GetTipsSlide(tipsLabel, tipsTexts[0], tipsTexts[1], tipsTexts[2]));
 
 						currentPanel = CurrentGroup.First();
 						Panel = currentPanel.Value;

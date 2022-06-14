@@ -376,5 +376,43 @@ namespace FactorioGuideProject
         {
             return new Label() { Text = "Начальная наука", Dock = DockStyle.Fill, ForeColor = Color.White, };
         }
+
+        public static Label[] GetTipsTexts()
+        {
+            var group = new List<Label>();
+
+            group.Add(new Label()
+            {
+                Text = "Сохраняйте чертежи: например, железнодорожные модули или кластер буров. " +
+                Environment.NewLine + "На панели быстрого доступа держите часто используемые предметы(конвееры, манипуляторы, опоры, чертежи, расходники)",
+                Dock = DockStyle.Fill,
+                ForeColor = Color.White,
+            });
+
+            group.Add(new Label()
+            {
+                Text = "Не истребляйте кусак лишний раз, это провоцирует их развитие. " +
+                Environment.NewLine + "При передвижении на машине не забывайте ее забирать, иначе потом придется долго до нее идти." +
+                Environment.NewLine + "Не бойтесь логических сетей, с их помощью можно делать множество интересных вещей. Она также полезна для оптимизации производства.",
+                Dock = DockStyle.Fill,
+                ForeColor = Color.White,
+            });
+
+            group.Add(new Label()
+            {
+                Text = "Стремитесь к автоматизации - на поздних этапах игры вы должны тратить время только на развитие, забудьте о ручном крафте. " +
+                Environment.NewLine + "Не бойтесь экспрериментировать: порой даже самые странные идеи приводят к решению проблем.",
+                Dock = DockStyle.Fill,
+                ForeColor = Color.White,
+            });
+
+            return group.ToArray();
+        }
+
+        public static Label GetTipsLabel()
+        {
+            return new Label() { Text = "СОВЕТЫ", Dock = DockStyle.Fill, ForeColor = Color.White, };
+        }
+
     }
 }

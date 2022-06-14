@@ -68,6 +68,26 @@ namespace FactorioGuideProject
 			return panel;
 		}
 
+        private static TableLayoutPanel CreateTipsPanel()
+        {
+			var panel = new TableLayoutPanel();
+			panel.RowCount = 5;
+			panel.ColumnCount = 4;
+
+			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 15));
+			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 20));
+			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 30));
+			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 20));
+			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 15));
+			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20));
+			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15));
+			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 55));
+			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10));
+			panel.Dock = DockStyle.Fill;
+
+			return panel;
+		}
+
 		/// <summary>
 		/// таблица для слайдов ресурсов
 		/// </summary>
@@ -101,37 +121,6 @@ namespace FactorioGuideProject
             return panel;
         }
 
-        /// <summary>
-        /// таблица с 1й строкой и 3мя колонками
-        /// </summary>
-        /// <returns></returns>
-        public static TableLayoutPanel CreatePanel1_3()
-        {
-			TableLayoutPanel panel = new TableLayoutPanel();
-
-			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
-			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25));
-			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50));
-			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25));
-			panel.Dock = DockStyle.Fill;
-			return panel;
-		}
-
-		/// <summary>
-		/// таблица с 3мя строками и 1й колонкой
-		/// </summary>
-		/// <returns></returns>
-		public static TableLayoutPanel CreatePanel3_1()
-        {
-			var panel = new TableLayoutPanel();
-			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
-			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 33));
-			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 33));
-			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 33));
-			panel.Dock = DockStyle.Fill;
-			return panel;
-		}
-
 		public static TableLayoutPanel CreatePanel4_1()
         {
 			var panel = new TableLayoutPanel();
@@ -140,22 +129,6 @@ namespace FactorioGuideProject
 			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 25));
 			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 25));
 			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 25));
-			panel.Dock = DockStyle.Fill;
-			return panel;
-		}
-
-		/// <summary>
-		/// таблица с 1й строкой и 2мя колонками
-		/// </summary>
-		/// <param name="first"></param>
-		/// <param name="second"></param>
-		/// <returns></returns>
-		private static TableLayoutPanel CreatePanel1_2(int first, int second)
-		{
-			TableLayoutPanel panel = new TableLayoutPanel();
-			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
-			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, first));
-			panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, second));
 			panel.Dock = DockStyle.Fill;
 			return panel;
 		}
@@ -292,7 +265,7 @@ namespace FactorioGuideProject
 		/// <param name="second"></param>
 		/// <param name="third"></param>
 		/// <returns></returns>
-		public static TableLayoutPanel GetDificultSlide(Label label, Label text, Button first, Button second, Button third, Button nextButton)
+		public static TableLayoutPanel GetSettingsFirstSlide(Label label, Label text, Button first, Button second, Button third, Button nextButton)
         {
 			var panel = CreateSettingsPanel();
 			panel.BackColor = FormColors.MainColor;
@@ -379,6 +352,30 @@ namespace FactorioGuideProject
 
 			return panel;
         }
+
+		public static TableLayoutPanel GetTipsSlide(Label label, Label topText, Label midText, Label botText)
+        {
+			var panel = CreateTipsPanel();
+			panel.BackColor = FormColors.MainColor;
+
+			panel.BackgroundImage = Backgrounds.Tips;
+			panel.BackgroundImageLayout = ImageLayout.Stretch;
+
+			label.Font = new Font("Intro", 22, FontStyle.Bold);
+			topText.Font = new Font("Actor", 10, FontStyle.Bold);
+			midText.Font = new Font("Actor", 10, FontStyle.Bold);
+			botText.Font = new Font("Actor", 10, FontStyle.Bold);
+
+			panel.SuspendLayout();
+			panel.Controls.Add(label, 2, 0);
+			panel.Controls.Add(topText, 1, 1);
+			panel.Controls.Add(midText, 2, 2);
+			panel.Controls.Add(botText, 1, 3);
+			panel.SetColumnSpan(panel.GetControlFromPosition(1, 1), 2);
+			panel.SetColumnSpan(panel.GetControlFromPosition(1, 3), 2);
+			panel.ResumeLayout();
+			return panel;
+		}
 
 		public static TableLayoutPanel GetDefenceGroupMainSlide(Bitmap picture, Label label, Label text, Button first, Button second, Button third, Button fourth)
         {

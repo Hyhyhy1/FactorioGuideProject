@@ -191,5 +191,8 @@
   <ItemGroup>
     <None Include="Pictures\science.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Backgrounds\Tips.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
