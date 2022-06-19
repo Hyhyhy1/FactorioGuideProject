@@ -97,15 +97,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Pictures\Settings1.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Pictures\Settings2.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Pictures\Settings3.PNG" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Pictures\coal.png" />
   </ItemGroup>
   <ItemGroup>
@@ -163,16 +154,10 @@
     <None Include="Pictures\Train.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Pictures\MainSlideBackground.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Backgrounds\DefenceSlideBackground.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Backgrounds\EnemySlideBackground.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Backgrounds\MainSlideBackground.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Backgrounds\ResourcesSlideBackground.png" />
@@ -194,6 +179,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Backgrounds\Tips.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Backgrounds\FirstSlideBackground.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -7,7 +7,10 @@ using System.Drawing;
 
 namespace FactorioGuideProject
 {
-	public class GroupsData
+	/// <summary>
+    /// в этом классе хранится текст для всех слайдов
+    /// </summary>
+    public class GroupsData
 	{
 		public static Label[] GetMapCreationGroupText()
 		{
@@ -411,7 +414,7 @@ namespace FactorioGuideProject
 
         public static Label GetTipsLabel()
         {
-            return new Label() { Text = "СОВЕТЫ", Dock = DockStyle.Fill, ForeColor = Color.White, };
+            return new Label() { Text = "Советы", Dock = DockStyle.Fill, ForeColor = Color.White, };
         }
 
     }

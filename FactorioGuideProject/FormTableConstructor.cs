@@ -7,22 +7,19 @@ using static FactorioGuideProject.SlideTables;
 namespace FactorioGuideProject
 {
     public class Scheme
-    {
-		
-		
-
+    {				
 		/// <summary>
 		/// этот метод создает простой слайд без кнопок
 		/// </summary>
 		/// <param name="label">заголовок слайда</param>
 		/// <param name="text">текст слайда</param>
 		/// <returns></returns>
-		public static TableLayoutPanel GetSimplePage(Label label, Label text)
+		public static TableLayoutPanel GetSimpleSlide(Label label, Label text)
         {
 			var panel = CreateSimplePanel();
 			panel.BackColor = FormColors.MainColor;
 
-			panel.BackgroundImage = Backgrounds.MainSlideBackground;
+			panel.BackgroundImage = Backgrounds.FirstSlideBackground;
 			panel.BackgroundImageLayout = ImageLayout.Stretch;
 
 			panel.SuspendLayout();
@@ -123,7 +120,7 @@ namespace FactorioGuideProject
 			var panel = CreateResourcesMainPanel();
 			panel.BackColor = FormColors.MainColor;
 
-			panel.BackgroundImage = Backgrounds.MainSlideBackground;
+			panel.BackgroundImage = Backgrounds.FirstSlideBackground;
 			panel.BackgroundImageLayout = ImageLayout.Stretch;
 
 			var label = new Label() { Text = "Ресурсы", AutoSize = true, Anchor = AnchorStyles.Top, ForeColor = Color.White, Font = new Font("Intro", 20, FontStyle.Bold) };
@@ -135,12 +132,21 @@ namespace FactorioGuideProject
 			return panel;
 		}
 
+		/// <summary>
+		/// конструктор первого слайда раздела "транспортировка"
+		/// </summary>
+		/// <param name="belt"></param>
+		/// <param name="manipulator"></param>
+		/// <param name="pipe"></param>
+		/// <param name="train"></param>
+		/// <param name="drone"></param>
+		/// <returns></returns>
 		public static TableLayoutPanel GetTransportMainSlide(PictureBox belt, PictureBox manipulator, PictureBox pipe, PictureBox train, PictureBox drone)
         {
 			var panel = CreateResourcesMainPanel();
 			panel.BackColor = FormColors.MainColor;
 
-			panel.BackgroundImage = Backgrounds.MainSlideBackground;
+			panel.BackgroundImage = Backgrounds.FirstSlideBackground;
 			panel.BackgroundImageLayout = ImageLayout.Stretch;
 
 			panel.Controls.Add(new Label() { Text = "Транспортировка", AutoSize = true, Anchor = AnchorStyles.Top, ForeColor = Color.White, Font = new Font("Intro", 20, FontStyle.Bold) }, 1, 1);
@@ -148,7 +154,16 @@ namespace FactorioGuideProject
 			return panel;
 		}
 
-		public static TableLayoutPanel GetResource(Bitmap picture,Label label, Label text, Button prevButton, bool isSquareImage)
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="picture"></param>
+		/// <param name="label"></param>
+		/// <param name="text"></param>
+		/// <param name="prevButton"></param>
+		/// <param name="isSquareImage"></param>
+		/// <returns></returns>
+		public static TableLayoutPanel GetResourceSlide(Bitmap picture,Label label, Label text, Button prevButton, bool isSquareImage)
         {
 			var panel = CreateResourcePanel();
 			panel.BackColor = FormColors.MainColor;
@@ -167,6 +182,14 @@ namespace FactorioGuideProject
 			return panel;
         }
 
+		/// <summary>
+		/// конструктор слайда "советы"
+		/// </summary>
+		/// <param name="label"></param>
+		/// <param name="topText"></param>
+		/// <param name="midText"></param>
+		/// <param name="botText"></param>
+		/// <returns></returns>
 		public static TableLayoutPanel GetTipsSlide(Label label, Label topText, Label midText, Label botText)
         {
 			var panel = CreateTipsPanel();
@@ -191,6 +214,17 @@ namespace FactorioGuideProject
 			return panel;
 		}
 
+		/// <summary>
+		/// Конструктор первого слайда раздела "оборона"
+		/// </summary>
+		/// <param name="picture"></param>
+		/// <param name="label"></param>
+		/// <param name="text"></param>
+		/// <param name="first"></param>
+		/// <param name="second"></param>
+		/// <param name="third"></param>
+		/// <param name="fourth"></param>
+		/// <returns></returns>
 		public static TableLayoutPanel GetDefenceGroupMainSlide(Bitmap picture, Label label, Label text, Button first, Button second, Button third, Button fourth)
         {
 			var panel = CreateDefencePanel();
@@ -214,7 +248,14 @@ namespace FactorioGuideProject
 			return panel;
 		}
 
-		public static TableLayoutPanel GetSimplePageWithPicture(Bitmap picture, Label label, Label text)
+		/// <summary>
+		/// Конструктор простого слайда с картинкой
+		/// </summary>
+		/// <param name="picture"></param>
+		/// <param name="label"></param>
+		/// <param name="text"></param>
+		/// <returns></returns>
+		public static TableLayoutPanel GetSimpleSlideWithPicture(Bitmap picture, Label label, Label text)
         {
 			var panel = CreateResourcePanel();
 			panel.BackColor = FormColors.MainColor;
@@ -224,9 +265,8 @@ namespace FactorioGuideProject
 			
 			panel.SuspendLayout();
 			panel.Controls.Add(new PictureBox() { Image = picture, Dock = DockStyle.Fill, Margin = new Padding(0), SizeMode = PictureBoxSizeMode.StretchImage }, 0, 0);
-			panel.Controls.Add(new Panel() { Dock = DockStyle.Fill, BackColor = FormColors.AccentColor, Margin = new Padding(0) }, 0, 2);
 			panel.Controls.Add(GetLabelAndText(label, text), 1, 1);
-			panel.SetRowSpan(panel.GetControlFromPosition(0,0), 2);
+			panel.SetRowSpan(panel.GetControlFromPosition(0,0), 3);
 			panel.ResumeLayout();
 			return panel;
 		}
@@ -260,8 +300,21 @@ namespace FactorioGuideProject
 			return panel;
         }
 
-		private static TableLayoutPanel GetResources(PictureBox stone, PictureBox wood, PictureBox coal, PictureBox coper, 
-			PictureBox iron, PictureBox water, PictureBox oil, PictureBox uranium, PictureBox fish)
+		/// <summary>
+		/// конструктор внутренней таблицы главного слайда раздела "ресурсы"
+		/// </summary>
+		/// <param name="stone"></param>
+		/// <param name="wood"></param>
+		/// <param name="coal"></param>
+		/// <param name="coper"></param>
+		/// <param name="iron"></param>
+		/// <param name="water"></param>
+		/// <param name="oil"></param>
+		/// <param name="uranium"></param>
+		/// <param name="fish"></param>
+		/// <returns></returns>
+		private static TableLayoutPanel GetResources(PictureBox stone, PictureBox wood, PictureBox coal, PictureBox coper, PictureBox iron, 
+			PictureBox water, PictureBox oil, PictureBox uranium, PictureBox fish)
         {
 			var labels = GroupsData.GetResourcesGroupLables();
 			var panel = CreatePanel5_6();
@@ -287,6 +340,15 @@ namespace FactorioGuideProject
 			return panel;
 		}
 
+		/// <summary>
+		/// конструктор внутренней таблицы главного слайда раздела "транспортировка"
+		/// </summary>
+		/// <param name="belt"></param>
+		/// <param name="manipulator"></param>
+		/// <param name="pipe"></param>
+		/// <param name="train"></param>
+		/// <param name="drone"></param>
+		/// <returns></returns>
 		private static TableLayoutPanel GetTransport(PictureBox belt, PictureBox manipulator, PictureBox pipe, PictureBox train, PictureBox drone)
         {
 			var panel = CreatePanel3_6();

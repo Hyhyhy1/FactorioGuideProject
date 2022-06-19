@@ -51,6 +51,10 @@ namespace FactorioGuideProject
 			return panel;
 		}
 
+		/// <summary>
+		/// конструктор таблицы для главного слайда раздела "ресурсы"
+		/// </summary>
+		/// <returns></returns>
 		internal static TableLayoutPanel CreateResourcesMainPanel()
 		{
 			var panel = new TableLayoutPanel();
@@ -69,6 +73,10 @@ namespace FactorioGuideProject
 			return panel;
 		}
 
+		/// <summary>
+		/// таблица для слайда "советы"
+		/// </summary>
+		/// <returns></returns>
 		internal static TableLayoutPanel CreateTipsPanel()
 		{
 			var panel = new TableLayoutPanel();
@@ -122,6 +130,10 @@ namespace FactorioGuideProject
 			return panel;
 		}
 
+		/// <summary>
+		/// конструктор таблицы с 4мя строками и 1й колонкой
+		/// </summary>
+		/// <returns></returns>
 		internal static TableLayoutPanel CreatePanel4_1()
 		{
 			var panel = new TableLayoutPanel();

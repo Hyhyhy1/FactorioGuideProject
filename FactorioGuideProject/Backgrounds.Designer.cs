@@ -83,9 +83,9 @@ namespace FactorioGuideProject {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap LandscapeSlideBackground {
+        internal static System.Drawing.Bitmap FirstSlideBackground {
             get {
-                object obj = ResourceManager.GetObject("LandscapeSlideBackground", resourceCulture);
+                object obj = ResourceManager.GetObject("FirstSlideBackground", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace FactorioGuideProject {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap MainSlideBackground {
+        internal static System.Drawing.Bitmap LandscapeSlideBackground {
             get {
-                object obj = ResourceManager.GetObject("MainSlideBackground", resourceCulture);
+                object obj = ResourceManager.GetObject("LandscapeSlideBackground", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

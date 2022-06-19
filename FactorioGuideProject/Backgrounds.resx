@@ -124,11 +124,11 @@
   <data name="EnemySlideBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Backgrounds\EnemySlideBackground.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="FirstSlideBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Backgrounds\FirstSlideBackground.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="LandscapeSlideBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Backgrounds\LandscapeSlideBacground.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="MainSlideBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Backgrounds\MainSlideBackground.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ResourcesSlideBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Backgrounds\ResourcesSlideBackground.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
