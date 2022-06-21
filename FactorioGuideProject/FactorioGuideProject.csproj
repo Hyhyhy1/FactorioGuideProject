@@ -183,5 +183,8 @@
   <ItemGroup>
     <None Include="Backgrounds\FirstSlideBackground.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Pictures\Final.gif" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

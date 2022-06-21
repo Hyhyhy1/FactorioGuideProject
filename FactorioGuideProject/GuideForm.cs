@@ -200,6 +200,18 @@ namespace FactorioGuideProject
 						Panel = currentPanel.Value;
 						Controls.Add(Panel);
 						break;
+
+					case 8: //Финал
+						CurrentGroup.Clear();
+						var finalText = GetFinalText();
+						var finalLabel = GetFinalLabel();
+
+						CurrentGroup.Add(GetSimpleSlideWithPicture(Pictures.Final,finalLabel, finalText));
+
+						currentPanel = CurrentGroup.First();
+						Panel = currentPanel.Value;
+						Controls.Add(Panel);
+						break;
 				}
             };
 			Controls.Add(Chapters);

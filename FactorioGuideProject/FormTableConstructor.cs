@@ -172,9 +172,16 @@ namespace FactorioGuideProject
 			text.Font = new Font("Actor", 10, FontStyle.Bold);
 
 			panel.SuspendLayout();
-			if(isSquareImage)
+            if (isSquareImage)
+            {
 				panel.Controls.Add(new Panel() { Dock = DockStyle.Fill, BackColor = FormColors.AccentColor, Margin = new Padding(0) }, 0, 0);
-			panel.Controls.Add(new PictureBox() { Image = picture, Dock = DockStyle.Fill, Margin = new Padding(0), SizeMode = PictureBoxSizeMode.StretchImage }, 0, 1);
+				panel.Controls.Add(new PictureBox() { Image = picture, Dock = DockStyle.Fill, Margin = new Padding(0), SizeMode = PictureBoxSizeMode.StretchImage }, 0, 1);
+			}
+            else
+            {
+				panel.Controls.Add(new PictureBox() { Image = picture, Dock = DockStyle.Fill, Margin = new Padding(0), SizeMode = PictureBoxSizeMode.StretchImage }, 0, 0);
+				panel.SetRowSpan(panel.GetControlFromPosition(0, 0), 2);
+			}	
 			panel.Controls.Add(prevButton,0,2);
 			panel.Controls.Add(GetLabelAndText(label, text), 1, 1);
 			panel.ResumeLayout();
